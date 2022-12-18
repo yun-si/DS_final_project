@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-body{
+.body{
 	display: block;
 	background-color: transparent;
 	/*background-image: ;*/
@@ -9,13 +9,16 @@ body{
 	background-clip: border-box; /*meaning?*/
 	-webkit-text-fill-color: inherit;
 }
+.search-div{
+	margin-bottom: 10px;
+}
 
 .text-field{
 	position: relative;
 	overflow: visible;
 	margin-right: 20px;
 	margin-left: 10px;
-	padding-left:20px;
+	padding:5px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #775e28;

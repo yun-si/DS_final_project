@@ -1,3 +1,5 @@
+<%@page import="java.io.IOException"%>
+<%@page import="Process.Translator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="Process.Keyword"%>
@@ -23,8 +25,17 @@
 			Keyword keyword = new Keyword(request.getParameter("inputKeyword"), 3);
 			//System.out.println(keyword.getName()); //showed in console
 			String keywordName = keyword.getName();
+			Translator translator = new Translator(keywordName);
+			try{
+				System.out.println("Translated text: " + translator.translate("en", "zh-TW"));
+			}
+			catch(IOException e){
+				System.out.println("IOException");
+			}catch(Exception e){
+				System.out.println("Other Exception");
+			}
 			%>
-			<a href="#" class="link">keywordName</a>
+			<a href="#" class="link">link text</a>
 	</div>
 	
 </body>
