@@ -9,15 +9,16 @@
 	background-clip: border-box; /*meaning?*/
 	-webkit-text-fill-color: inherit;
 }
-.search-div{
-	margin-bottom: 10px;
-}
 
 .text-field{
 	position: relative;
+	left: 0px;
+	right: 0px;
+	width: 75%;
 	overflow: visible;
 	margin-right: 20px;
 	margin-left: 10px;
+	margin-bottom: 10px;
 	padding:5px;
 	border-style: solid;
 	border-width: 1px;
@@ -27,6 +28,13 @@
 	text-align: left;
 	-o-object-fit: contain; /*meaning?*/
 	object-fit: contain; /*meaning?*/
+}
+
+.search-div{
+	margin: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: rgba(216, 205, 172, 0.85);
 }
 
 .submit-button{
@@ -63,10 +71,17 @@
 
 
 .search_result_div{
-	margin-left: 15px;
-	margin-right: 15px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #796c51;
-	background-color: #f7ebb6;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding: 20px 40px;
+	background-color: rgba(241, 239, 212, 0.85);
+	-o-object-fit: fill;
+	object-fit: fill;
+}
+
+.link{
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
