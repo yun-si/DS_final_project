@@ -18,9 +18,9 @@ public class WebPage {
 	public void setScore(ArrayList<Keyword> keywords) throws IOException{
 		score = 0;
 		//1. calculate score
-//		for(int i =0;i<keywords.size();i++) {
-//			score+=counter.countKeyword(keywords.get(i).name)*keywords.get(i).weight;
-//		}
+		for(int i =0;i<keywords.size();i++) {
+			score+=counter.countKeyword(keywords.get(i).getName())*keywords.get(i).getWeight();
+		}
 	}
 
 }

@@ -15,14 +15,14 @@ public class WebNode {
 		this.children = new ArrayList<WebNode>();
 	}
 	
-//	public void setNodeScore(ArrayList<Keyword> keywords) throws IOException{
-//		webPage.setScore(keywords);
-//		nodeScore = webPage.score;		
-//		
-//		for(WebNode child : children){
-//			nodeScore += child.nodeScore;
-//		}		
-//	}
+	public void setNodeScore(ArrayList<Keyword> keywords) throws IOException{
+		webPage.setScore(keywords);
+		nodeScore = webPage.score;		
+		
+		for(WebNode child : children){
+			nodeScore += child.nodeScore;
+		}		
+	}
 	
 	public void addChild(WebNode child){
 		this.children.add(child);
