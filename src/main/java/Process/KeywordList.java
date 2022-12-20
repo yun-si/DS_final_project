@@ -113,6 +113,7 @@ private LinkedList<Keyword> lst;
 	}
 
 	public void deleteCount(int c){
+
 		
 		LinkedList<Keyword> found= new LinkedList<>();		
 		for(int i=0;  i < lst.size(); i++) {
@@ -142,7 +143,10 @@ private LinkedList<Keyword> lst;
 	
 	
 	public void deleteName(String name){
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 944825f56f43d73f6b63902d0afb8513fd9e2cc8
 		LinkedList<Keyword> results = new LinkedList<>();
 		for(int i = 0; i < lst.size(); i++){
 		    Keyword k = lst.get(i);

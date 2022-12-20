@@ -36,7 +36,11 @@ public class WordCounter {
     public int BoyerMoore(String T, String P){
           int i = P.length() -1;
           int j = P.length() -1;
+<<<<<<< HEAD
           
+=======
+        
+>>>>>>> 944825f56f43d73f6b63902d0afb8513fd9e2cc8
          while(i<=T.length()-1) {
         	 if(T.charAt(i)==P.charAt(j)) {
             	 if(j==0) {
@@ -56,7 +60,11 @@ public class WordCounter {
     }
 
     public int last(char c, String P){
+<<<<<<< HEAD
 
+=======
+    	
+>>>>>>> 944825f56f43d73f6b63902d0afb8513fd9e2cc8
     	    if(P.indexOf(c)!=-1) {
     		int n=P.length()-1;
     		for(int i=n;i>=0;i--) {
@@ -88,7 +96,7 @@ public class WordCounter {
 		keyword = keyword.toUpperCase();
 	
 	    int retVal = 0; 
-	
+
 		int n=content.length();
 		int m=keyword.length();
 		int i=BoyerMoore(content,keyword);

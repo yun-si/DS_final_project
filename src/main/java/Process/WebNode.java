@@ -9,9 +9,13 @@ public class WebNode {
 	public ArrayList<WebNode> children;
 	public WebPage webPage;	
 	public double nodeScore;
+	public String url;
 	
 	public WebNode(WebPage webPage){
 		this.webPage = webPage;
+		
+		this.url=webPage.getUrl();
+		
 		this.children = new ArrayList<WebNode>();
 	}
 	
