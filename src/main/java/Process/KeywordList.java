@@ -12,12 +12,12 @@ private LinkedList<Keyword> lst;
 		
 		for(int i = 0; i < lst.size(); i++){
 			Keyword k = lst.get(i);	
-			if(keyword.getCount() <= k.getCount()){ //if count is smaller than original, placed in the front; if same count then compare weight
+			if(keyword.getCount() <= k.getCount()){ 
 				if(keyword.getCount()< k.getCount()) {
 					lst.add(i,keyword);
 					return;
 				}
-				else if(keyword.getCount() == k.getCount() && keyword.getCount() <= k.getCount()) { //if same count, smaller weight placed in the front
+				else if(keyword.getCount() == k.getCount() && keyword.getCount() <= k.getCount()) {
 					lst.add(i,keyword);
 					return;
 				}	
@@ -25,6 +25,8 @@ private LinkedList<Keyword> lst;
 		}
 		lst.add(keyword);	
 	}
+	
+	
 	
 	public void outputIndex(int i){
 		if(i >= lst.size()){
@@ -96,7 +98,7 @@ private LinkedList<Keyword> lst;
 	
 	public void outputScore(){
 		float results = 0;
-		// 1.To calculate all keyword's count*weight
+		
 		for(int i=0;  i < lst.size(); i++) {
 			results+=lst.get(i).getCount()*lst.get(i).getWeight();
 		}
@@ -111,7 +113,7 @@ private LinkedList<Keyword> lst;
 	}
 
 	public void deleteCount(int c){
-		
+
 		
 		LinkedList<Keyword> found= new LinkedList<>();		
 		for(int i=0;  i < lst.size(); i++) {
@@ -141,6 +143,10 @@ private LinkedList<Keyword> lst;
 	
 	
 	public void deleteName(String name){
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 944825f56f43d73f6b63902d0afb8513fd9e2cc8
 		LinkedList<Keyword> results = new LinkedList<>();
 		for(int i = 0; i < lst.size(); i++){
 		    Keyword k = lst.get(i);
