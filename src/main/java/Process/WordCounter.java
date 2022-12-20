@@ -36,7 +36,6 @@ public class WordCounter {
     public int BoyerMoore(String T, String P){
           int i = P.length() -1;
           int j = P.length() -1;
-        // Bonus: Implement Boyer-Moore Algorithm
           
          while(i<=T.length()-1) {
         	 if(T.charAt(i)==P.charAt(j)) {
@@ -57,7 +56,7 @@ public class WordCounter {
     }
 
     public int last(char c, String P){
-    	// Bonus: Implement last occurence function
+
     	    if(P.indexOf(c)!=-1) {
     		int n=P.length()-1;
     		for(int i=n;i>=0;i--) {
@@ -84,12 +83,12 @@ public class WordCounter {
 		    content = fetchContent();
 		}
 		
-		//To do a case-insensitive search, we turn the whole content and keyword into upper-case:
+		
 		content = content.toUpperCase();
 		keyword = keyword.toUpperCase();
 	
 	    int retVal = 0; 
-		// 1. calculates appearances of keyword (Bonus: Implement Boyer-Moore Algorithm)
+	
 		int n=content.length();
 		int m=keyword.length();
 		int i=BoyerMoore(content,keyword);
