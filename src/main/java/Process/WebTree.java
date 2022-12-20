@@ -8,6 +8,9 @@ public class WebTree {
 	
 	public WebTree(WebPage rootPage){
 		this.root = new WebNode(rootPage);
+		
+		QuickSort sort=new QuickSort();
+		
 	}
 	
 	public void setPostOrderScore(ArrayList<Keyword> keywords) throws IOException{
