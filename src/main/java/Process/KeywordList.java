@@ -9,8 +9,7 @@ private LinkedList<Keyword> lst;
 	}
 	
 	public void add(Keyword keyword){
-		//add keyword to proper index base on its count. DECENDING SORT BY COUNT AND WEIGHT
-		//printKeywordList(lst) : check if elements are sorted 
+		
 		for(int i = 0; i < lst.size(); i++){
 			Keyword k = lst.get(i);	
 			if(keyword.getCount() <= k.getCount()){ //if count is smaller than original, placed in the front; if same count then compare weight
@@ -55,7 +54,7 @@ private LinkedList<Keyword> lst;
 		LinkedList<Keyword> results = new LinkedList<>();
 		for(int i = 0; i < lst.size(); i++){
 		    Keyword k = lst.get(i);
-		    if(k.name.contains(pattern)){
+		    if(k.getName().contains(pattern)){
 		    	results.add(k);
 		    }
 		}
@@ -99,7 +98,7 @@ private LinkedList<Keyword> lst;
 		float results = 0;
 		// 1.To calculate all keyword's count*weight
 		for(int i=0;  i < lst.size(); i++) {
-			results+=lst.get(i).count*lst.get(i).weight;
+			results+=lst.get(i).getCount()*lst.get(i).getWeight();
 		}
 		System.out.println(results);
 	}
@@ -112,11 +111,11 @@ private LinkedList<Keyword> lst;
 	}
 
 	public void deleteCount(int c){
-		// 2. remove nodes that the count is equal to c
+		
 		
 		LinkedList<Keyword> found= new LinkedList<>();		
 		for(int i=0;  i < lst.size(); i++) {
-			if(lst.get(i).count==c) {
+			if(lst.get(i).getCount()==c) {
 				found.add(lst.get(i));
 			}
 		}
@@ -126,11 +125,11 @@ private LinkedList<Keyword> lst;
 	}
 
 	public void deleteHas(String pattern){
-		// 3. remove nodes that the name contains input name
+		
 		LinkedList<Keyword> results = new LinkedList<>();
 		for(int i = 0; i < lst.size(); i++){
 		    Keyword k = lst.get(i);
-		    if(k.name.contains(pattern)){
+		    if(k.getName().contains(pattern)){
 		    	results.add(k);
 		    }
 		}
@@ -142,11 +141,10 @@ private LinkedList<Keyword> lst;
 	
 	
 	public void deleteName(String name){
-		// 4. remove nodes that the name is equal to input name	
 		LinkedList<Keyword> results = new LinkedList<>();
 		for(int i = 0; i < lst.size(); i++){
 		    Keyword k = lst.get(i);
-		    if(k.name.contains(name)){
+		    if(k.getName().contains(name)){
 		    	results.add(k);
 		    }
 		}
@@ -156,7 +154,7 @@ private LinkedList<Keyword> lst;
 	}
 	
 	public void deleteFirstN(int n){
-		// 5. remove first n nodes
+		
 		LinkedList<Keyword> results = new LinkedList<>();
 		for(int i = 0; i < n; i++){
 		   results.add(lst.get(i));

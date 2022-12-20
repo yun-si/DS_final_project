@@ -22,5 +22,8 @@ public class WebPage {
 			score+=counter.countKeyword(keywords.get(i).getName())*keywords.get(i).getWeight();
 		}
 	}
+	public String getUrl() {
+		return this.url;
+	}
 
 }
