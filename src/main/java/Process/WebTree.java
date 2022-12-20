@@ -33,7 +33,8 @@ public class WebTree {
 		if(nodeDepth > 1) System.out.print("\n" + repeat("\t", nodeDepth-1));
 
 		System.out.print("(");
-		System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
+		System.out.print(startNode.webPage.name + "," + startNode.url);
+		//startNode.nodeScore
 		
 		//3. print child via pre-order
 		for(WebNode web:startNode.children) {
