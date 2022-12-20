@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Coffee Master</title>
-	<link rel="stylesheet" href="gui.css">
+	<link rel="stylesheet" href="SearchResult.css">
 </head>
 <body class="body">
 	<div class="search-div">
