@@ -1,20 +1,23 @@
 @charset "UTF-8";
 
 .body{
+	font-family: 'system-ui';
 	display: block;
 	background-color: transparent;
 	/*background-image: ;*/
 	background-position: 0px 0px;
 	background-size: cover;
 	background-clip: border-box; /*meaning?*/
+	
 	-webkit-text-fill-color: inherit;
 }
 
 .text-field{
+	font-family: 'system-ui';
 	position: relative;
 	left: 0px;
 	right: 0px;
-	width: 75%;
+	width: 80%;
 	overflow: visible;
 	margin-right: 20px;
 	margin-left: 10px;
@@ -38,9 +41,11 @@
 }
 
 .submit-button{
+	font-family: 'system-ui';
 	margin-right: 10px;
 	margin-left: 10px;
 	background-color: #bbaa5c;
+	border-radius: 5px;
 }
 
 .form{
@@ -65,6 +70,7 @@
 }
 
 .heading{
+	font-family: 'system-ui';
 	padding-left: 20px;
 	color: #5a4e17;
 }
@@ -81,6 +87,7 @@
 }
 
 .link{
+	font-family: 'system-ui';
 	display: block;
 	padding-top: 5px;
 	padding-bottom: 5px;
