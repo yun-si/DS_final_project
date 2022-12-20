@@ -15,7 +15,7 @@
 		<h1 class="heading">Coffee Master</h1>
 		<div class="form-div">
 			<form id="search-form" name="search-form">
-				<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword"> 
+				<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" onblur="placeholder='請輸入關鍵字'"> 
 				<input type="submit" value="Search" data-wait="Please wait..." class="submit-button">
 			</form>
 		</div>
@@ -32,7 +32,7 @@
 			catch(IOException e){
 				System.out.println("IOException");
 			}catch(Exception e){
-				System.out.println("Other Exception");
+				System.out.println("");
 			}
 			%>
 			<a href="#" class="link">link text</a>
