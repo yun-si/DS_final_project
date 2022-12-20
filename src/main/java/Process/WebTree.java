@@ -10,18 +10,18 @@ public class WebTree {
 		this.root = new WebNode(rootPage);
 	}
 	
-//	public void setPostOrderScore(ArrayList<Keyword> keywords) throws IOException{
-//		setPostOrderScore(root, keywords);
-//	}
+	public void setPostOrderScore(ArrayList<Keyword> keywords) throws IOException{
+		setPostOrderScore(root, keywords);
+	}
 	
-//	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) throws IOException{
-//		//2. compute the score of children nodes via post-order, then setNodeScore for startNode
-//
+	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) throws IOException{
+		//2. compute the score of children nodes via post-order, then setNodeScore for startNode
+
 //		for(WebNode child:startNode.children) {
 //			setPostOrderScore(child,keywords);
 //		}
 //		startNode.setNodeScore(keywords);
-//		}
+		}
 	
 	public void eularPrintTree(){
 		eularPrintTree(root);
