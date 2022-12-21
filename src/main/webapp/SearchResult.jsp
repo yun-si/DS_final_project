@@ -15,8 +15,14 @@
 		<h1 class="heading">Coffee Master</h1>
 		<div class="form-div">
 			<form id="search-form" name="search-form">
-				<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" onblur="placeholder='請輸入關鍵字'"> 
+				<div class="search-field-div">
+				<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'> 
+				</div>
+				<div class="search-button-div">
 				<input type="submit" value="Search" data-wait="Please wait..." class="submit-button">
+				<input type='image' src="coffee_search_icon.png" class='image'/>
+				</div>
+				
 			</form>
 		</div>
 	</div>
@@ -27,7 +33,7 @@
 			String keywordName = keyword.getName();
 			Translator translator = new Translator(keywordName);
 			try{
-				System.out.println("Translated text: " + translator.translate("en", "zh-TW"));
+				System.out.println("Translated text: " + translator.translate("", "zh-TW"));
 			}
 			catch(IOException e){
 				System.out.println("IOException");

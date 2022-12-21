@@ -8,29 +8,7 @@
 	background-position: 0px 0px;
 	background-size: cover;
 	background-clip: border-box; /*meaning?*/
-	
 	-webkit-text-fill-color: inherit;
-}
-
-.text-field{
-	font-family: 'system-ui';
-	position: relative;
-	left: 0px;
-	right: 0px;
-	width: 80%;
-	overflow: visible;
-	margin-right: 20px;
-	margin-left: 10px;
-	margin-bottom: 10px;
-	padding:5px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #775e28;
-	border-radius: 5px;
-	background-color: #f8ebc5;
-	text-align: left;
-	-o-object-fit: contain; /*meaning?*/
-	object-fit: contain; /*meaning?*/
 }
 
 .search-div{
@@ -40,25 +18,86 @@
 	background-color: rgba(216, 205, 172, 0.85);
 }
 
-.submit-button{
+.heading{
 	font-family: 'system-ui';
+	font-weight: bolder;
+	padding-left: 20px;
+	color: #5a4e17;
+}
+
+.text-field{
+	vertical-align:middle;
+	height: 30px;
+	font-family: 'system-ui';
+	font-size: 16px;
+	position: relative;
+	left: 0px;
+	right: 0px;
+	overflow: visible;
+	margin-right: 20px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	padding:3px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #775e28;
+	border-radius: 5px;
+	background-color: #f8ebc5;
+	text-align: left;
+	-o-object-fit: fill; /*meaning?*/
+	object-fit: fill; /*meaning?*/
+}
+
+.image{
+	vertical-align:middle;
+	width: 35px;
+	height: 35px;
+}
+
+.submit-button{
+	vertical-align:middle;
+	height: 40px;
+	width: 70px;
+	font-family: 'system-ui';
+	font-size: 16px;
 	margin-right: 10px;
 	margin-left: 10px;
 	background-color: #bbaa5c;
-	border-radius: 5px;
+	border-color: transparent;
 }
 
-.form{
+.search-field-div{
+	float: left;
+}
+
+.search-button-div{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	padding: 10px;
+	margin-right: 10px;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
 	-ms-flex-direction: row;
 	flex-direction: row;
+	background-color: #bbaa5c;
+	border-radius: 5px;
+}
+
+.form-div{
+	padding: 10px;
+	margin: 10px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	/*
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	-ms-flex-pack: center;
@@ -66,15 +105,9 @@
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	-ms-flex-align: center;
-	align-items: center;
-}
+	align-items: center;*/
 
-.heading{
-	font-family: 'system-ui';
-	padding-left: 20px;
-	color: #5a4e17;
 }
-
 
 .search_result_div{
 	margin-left: 10px;
