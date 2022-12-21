@@ -11,18 +11,8 @@ public class Translator {
 	
 	private String text;
 	
-	public Translator(String text) {
-		this.text = text;
-	}
-	
-//    public static void main(String[] args) throws IOException {
-//        String text = "Hello world!";
-//        //Translated text: Hallo Welt!
-//        System.out.println("Translated text: " + translate("en", "de", text));
-//    }
-
-    public String translate(String langFrom, String langTo) throws IOException {
-        // INSERT YOU URL HERE
+    public String translate(String langFrom, String langTo, String text) throws IOException {
+    	this.text = text;
         String urlStr = "https://script.google.com/macros/s/AKfycbzm8X9vF0XAx1Rh1HrjCtQiaGBwvknt4-PvTerRjBj8FKKqxWRyt7vdEMpairS_2pJctQ/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
                 "&target=" + langTo +

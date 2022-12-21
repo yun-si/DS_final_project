@@ -29,11 +29,11 @@
 	<div class="search_result_div">
 			<%
 			Keyword keyword = new Keyword(request.getParameter("inputKeyword"), 3);
-			//System.out.println(keyword.getName()); //showed in console
 			String keywordName = keyword.getName();
-			Translator translator = new Translator(keywordName);
+			Translator translator = new Translator();
+			
 			try{
-				System.out.println("Translated text: " + translator.translate("", "zh-TW"));
+				System.out.println("Translated text: " + translator.translate("", "zh-TW", keywordName));
 			}
 			catch(IOException e){
 				System.out.println("IOException");
