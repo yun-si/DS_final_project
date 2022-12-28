@@ -10,7 +10,7 @@
 	<title>Coffee Master</title>
 	<link rel="stylesheet" href="SearchResult.css">
 </head>
-<body class="body">
+<body>
 	<div class="search-div">
 		<h1 class="heading">Coffee Master</h1>
 		<div class="form-div">
@@ -20,13 +20,14 @@
 				</div>
 				<div class="search-button-div">
 				<input type="submit" value="Search" data-wait="Please wait..." class="submit-button">
-				<input type='image' src="coffee_search_icon.png" class='image'/>
+				<input type='image' src="coffee_search_icon.png" class='search-img'/>
 				</div>
 				
 			</form>
 		</div>
 	</div>
-	<div class="search_result_div">
+	
+	<div class="result_div">
 			<%
 			Keyword keyword = new Keyword(request.getParameter("inputKeyword"), 3);
 			String keywordName = keyword.getName();

@@ -1,10 +1,90 @@
-.body{
+body{
+	font-family: 'system-ui';
 	display: block;
 	background-color: transparent;
-	background-size: auto;
-	font-family: system-ui;
-	background-clip: border-box; /*default*/
+	/*background-image: ;*/
+	background-position: 0px 0px;
+	background-size: cover;
+	background-clip: border-box; /*meaning?*/
 	-webkit-text-fill-color: inherit;
+
+	background-color: rgba(216, 205, 172, 0.85);
+}
+
+.search-div{
+	margin: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+/*	border: 1px transparent;
+	border-radius: 5px;*/
+}
+
+.main-img-div{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.main-img{
+	object-fit: contain;
+	object-position: center;
+	width: 45%;
+	border: transparent;
+	border-radius: 10px;
+	opacity: 0.8;
+}
+
+.heading{
+	font-family: 'system-ui';
+	font-weight: bolder;
+/*	padding-left: 20px;*/
+	color: #5a4e17;
+
+	text-align: center;
+}
+
+.form-div{
+	padding: 10px;
+	margin: 10px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+
+}
+
+.search-field-div{
+	float: left;
 }
 
 .text-field{
@@ -30,28 +110,6 @@
 	object-fit: fill; /*meaning?*/
 }
 
-.image{
-	vertical-align:middle;
-	width: 35px;
-	height: 35px;
-}
-
-.submit-button{
-	vertical-align:middle;
-	height: 40px;
-	width: 70px;
-	font-family: 'system-ui';
-	font-size: 16px;
-	margin-right: 10px;
-	margin-left: 10px;
-	background-color: #bbaa5c;
-	border-color: transparent;
-}
-
-.search-field-div{
-	float: left;
-}
-
 .search-button-div{
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -67,25 +125,20 @@
 	border-radius: 5px;
 }
 
-.form-div{
-	padding: 10px;
-	margin: 10px;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	-ms-flex-direction: row;
-	flex-direction: row;
+.submit-button{
+	vertical-align:middle;
+	height: 40px;
+	width: 70px;
+	font-family: 'system-ui';
+	font-size: 16px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: #bbaa5c;
+	border-color: transparent;
+}
 
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
+.search-img{
+	vertical-align:middle;
+	width: 35px;
+	height: 35px;
 }

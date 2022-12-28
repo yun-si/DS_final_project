@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.body{
+body{
 	font-family: 'system-ui';
 	display: block;
 	background-color: transparent;
@@ -23,6 +23,34 @@
 	font-weight: bolder;
 	padding-left: 20px;
 	color: #5a4e17;
+}
+
+.form-div{
+	padding: 10px;
+	margin: 10px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+
+}
+
+.search-field-div{
+	float: left;
 }
 
 .text-field{
@@ -48,28 +76,6 @@
 	object-fit: fill; /*meaning?*/
 }
 
-.image{
-	vertical-align:middle;
-	width: 35px;
-	height: 35px;
-}
-
-.submit-button{
-	vertical-align:middle;
-	height: 40px;
-	width: 70px;
-	font-family: 'system-ui';
-	font-size: 16px;
-	margin-right: 10px;
-	margin-left: 10px;
-	background-color: #bbaa5c;
-	border-color: transparent;
-}
-
-.search-field-div{
-	float: left;
-}
-
 .search-button-div{
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -85,31 +91,25 @@
 	border-radius: 5px;
 }
 
-.form-div{
-	padding: 10px;
-	margin: 10px;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	/*
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;*/
-
+.submit-button{
+	vertical-align:middle;
+	height: 40px;
+	width: 70px;
+	font-family: 'system-ui';
+	font-size: 16px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: #bbaa5c;
+	border-color: transparent;
 }
 
-.search_result_div{
+.search-img{
+	vertical-align:middle;
+	width: 35px;
+	height: 35px;
+}
+
+.result_div{
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
