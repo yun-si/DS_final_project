@@ -1,0 +1,91 @@
+.body{
+	display: block;
+	background-color: transparent;
+	background-size: auto;
+	font-family: system-ui;
+	background-clip: border-box; /*default*/
+	-webkit-text-fill-color: inherit;
+}
+
+.text-field{
+	vertical-align:middle;
+	height: 30px;
+	font-family: 'system-ui';
+	font-size: 16px;
+	position: relative;
+	left: 0px;
+	right: 0px;
+	overflow: visible;
+	margin-right: 20px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	padding:3px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #775e28;
+	border-radius: 5px;
+	background-color: #f8ebc5;
+	text-align: left;
+	-o-object-fit: fill; /*meaning?*/
+	object-fit: fill; /*meaning?*/
+}
+
+.image{
+	vertical-align:middle;
+	width: 35px;
+	height: 35px;
+}
+
+.submit-button{
+	vertical-align:middle;
+	height: 40px;
+	width: 70px;
+	font-family: 'system-ui';
+	font-size: 16px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: #bbaa5c;
+	border-color: transparent;
+}
+
+.search-field-div{
+	float: left;
+}
+
+.search-button-div{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-right: 10px;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	background-color: #bbaa5c;
+	border-radius: 5px;
+}
+
+.form-div{
+	padding: 10px;
+	margin: 10px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
