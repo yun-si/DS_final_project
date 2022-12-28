@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.io.IOException"%>
+<%@page import="Process.Translator"%>
+<%@ page import="Process.Keyword"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +17,30 @@
 	<div class="form-div">
 		<form id="search-form" name="search-form">
 			<div class="search-field-div">
-			<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='½Ð¿é¤JÃöÁä¦r'> 
+			<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='è«‹è¼¸å…¥é—œéµå­—'> 
 			</div>
 			<div class="search-button-div">
-			<input type="submit" value="Search" data-wait="Please wait..." class="submit-button">
+			<a href ='http://localhost:8080/CoffeeShopSearch/Integration'><input type="submit" value="Search" data-wait="Please wait..." class="submit-button"></a>
 			<input type='image' src="coffee_search_icon.png" class='search-img'/>
 			</div>
-			
 		</form>
 	</div>
+	
+	<%
+			Keyword keyword = new Keyword(request.getParameter("inputKeyword"), 3);
+			String keywordName = keyword.getName();
+			Translator translator = new Translator();
+			
+			try{
+				System.out.println("Translated text: " + translator.translate("", "zh-TW", keywordName));
+			}
+			catch(IOException e){
+				System.out.println("IOException");
+			}catch(Exception e){
+				System.out.println("");
+			}
+			%>
 </div>
+
 </body>
 </html>
