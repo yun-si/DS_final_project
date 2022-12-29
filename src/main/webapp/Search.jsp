@@ -20,8 +20,10 @@
 			<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'> 
 			</div>
 			<div class="search-button-div">
-			<a href ='http://localhost:8080/CoffeeShopSearch/Integration'><input type="submit" value="Search" data-wait="Please wait..." class="submit-button"></a>
-			<input type='image' src="coffee_search_icon.png" class='search-img'/>
+			<a href ='http://localhost:8080/CoffeeShopSearch/SearchResult.jsp'> <img src="coffee_search_icon.png" class='search-img'/> </a>
+			<%--<input type="submit" value="Search" data-wait="Please wait..." class="submit-button"> --%>
+			
+
 			</div>
 		</form>
 	</div>

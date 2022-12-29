@@ -1,7 +1,5 @@
 package Process;
 
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -15,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class TestProject
+ * Servlet implementation class Integration
  */
 @WebServlet("/Intergation")
 public class Integration extends HttpServlet {
@@ -31,17 +29,16 @@ public class Integration extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
-		if(request.getParameter("keyword")== null) {
+		response.setContentType("text/htm");
+		if(request.getParameter("inputKeyword")== null) {
 			String requestUri = request.getRequestURI();
 			request.setAttribute("requestUri", requestUri);
 			request.getRequestDispatcher("Search.jsp").forward(request, response);
 			return;
 		}
-		GoogleQuery google = new GoogleQuery(request.getParameter("keyword"));
+		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
 		HashMap<String, String> query = google.query();
 		
 		String[][] s = new String[query.size()][2];
@@ -54,8 +51,7 @@ public class Integration extends HttpServlet {
 		    s[num][1] = value;
 		    num++;
 		}
-		request.getRequestDispatcher("SearchResult.jsp")
-		 .forward(request, response); 
+		request.getRequestDispatcher("SearchResult.jsp").forward(request, response); 
 		
 	}
 
@@ -63,7 +59,7 @@ public class Integration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

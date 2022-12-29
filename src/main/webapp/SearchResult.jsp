@@ -19,8 +19,7 @@
 				<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'> 
 				</div>
 				<div class="search-button-div">
-				<input type="submit" value="Search" data-wait="Please wait..." class="submit-button">
-				<input type='image' src="coffee_search_icon.png" class='search-img'/>
+				<a href ='http://localhost:8080/CoffeeShopSearch/SearchResult.jsp'> <img src="coffee_search_icon.png" class='search-img'/> </a>
 				</div>
 				
 			</form>
@@ -42,7 +41,7 @@
 				System.out.println("");
 			}
 			%>
-			<a href="#" class="link">link text</a>
+			<a href="https://github.com/yun-si/DS_final_project" class="link">https://github.com/yun-si/DS_final_project</a>
 	</div>
 	
 </body>

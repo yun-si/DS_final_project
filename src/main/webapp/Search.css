@@ -121,24 +121,12 @@ body{
 	-webkit-flex-direction: row;
 	-ms-flex-direction: row;
 	flex-direction: row;
-	background-color: #bbaa5c;
-	border-radius: 5px;
-}
-
-.submit-button{
-	vertical-align:middle;
-	height: 40px;
-	width: 70px;
-	font-family: 'system-ui';
-	font-size: 16px;
-	margin-right: 10px;
-	margin-left: 10px;
-	background-color: #bbaa5c;
-	border-color: transparent;
+	background-color: transparent;
 }
 
 .search-img{
 	vertical-align:middle;
 	width: 35px;
 	height: 35px;
+	background-color: transparent;
 }
