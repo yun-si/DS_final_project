@@ -122,6 +122,18 @@ body{
 	-ms-flex-direction: row;
 	flex-direction: row;
 	background-color: transparent;
+	border: none;
+}
+
+/*a:hover {
+  background-color: rgb(216, 205, 172);
+}
+*/
+.search-button{
+	border: none;
+	background-color: transparent;
+	text-align: center;
+	border: none;
 }
 
 .search-img{
@@ -129,4 +141,5 @@ body{
 	width: 35px;
 	height: 35px;
 	background-color: transparent;
+	border: none;
 }
