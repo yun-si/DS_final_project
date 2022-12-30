@@ -6,10 +6,16 @@ import java.util.ArrayList;
 public class WebTree {
 	public WebNode root;
 	
+	
+	
+	QuickSort sort;
+	
 	public WebTree(WebPage rootPage){
 		this.root = new WebNode(rootPage);
 		
-		QuickSort sort=new QuickSort();
+		
+		
+		sort =new QuickSort();
 		
 	}
 	
@@ -59,4 +65,17 @@ public class WebTree {
 		}
 		return retVal;
 	}
+
+	
+	
+	public WebNode getRoot() {
+		return root;
+	}
+	public void ToSort() {
+		sort.add(getRoot());
+	}
+	public double getScore() {
+		return root.nodeScore;
+	}
+
 }

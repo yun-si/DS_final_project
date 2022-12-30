@@ -20,9 +20,15 @@ public class WebNode {
 	}
 	
 	
+	
 	public WebPage getPage() {
 		return webPage;
 	}
+	public String getPageName() {
+		return getPage().name;
+	}
+	
+	
 	
 	
 	public void setNodeScore(ArrayList<Keyword> keywords) throws IOException{
