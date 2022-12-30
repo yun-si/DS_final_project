@@ -20,7 +20,7 @@ public class GoogleQuery
 	
 	public GoogleQuery(String searchKeyword)
 	{
-		this.searchKeyword = searchKeyword;
+		this.searchKeyword = searchKeyword.concat("coffee");
 		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=20";
 	}
 	
