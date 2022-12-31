@@ -15,7 +15,7 @@ public class WebPage {
 		this.counter = new WordCounter(url);	
 	}
 	
-	public void setScore(ArrayList<Keyword> keywords) throws IOException{
+	public void setScore(KeywordList keywords) throws IOException{
 		score = 0;
 		//1. calculate score
 		for(int i =0;i<keywords.size();i++) {

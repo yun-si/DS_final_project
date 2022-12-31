@@ -55,11 +55,25 @@ private ArrayList<WebNode> lst;
 	
 	
 	public String output() {
+		int min=2;
+		int max=5;
+		int range=max-min+1;
+		int random=(int)(Math.random()*range)+min;
+		lst.add(random,null);
 		int l=lst.size();
+		
 		String[][] matrix=new String[l][2];
+		
 		for(int i=0;i<l;i++) {
-			matrix[i][0]=(String)((WebNode) lst.get(i)).getPageName().toString();
-			matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();
+			if(i==random) {
+//				String nomad="Coffee Nomd";
+//				String nurl="https://cafenomad.tw/";
+				matrix[i][0]="Coffee Nomad";
+				matrix[i][1]="https://cafenomad.tw/";
+			}else {
+				matrix[i][0]=(String)((WebNode) lst.get(i)).getPageName().toString();
+				matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();
+			}
 		}
 		return matrix[l][2];
 	}
