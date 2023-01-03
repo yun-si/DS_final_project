@@ -66,8 +66,10 @@ private ArrayList<WebNode> lst;
 		
 		for(int i=1;i<l;i++) {
 			if(i==1) {
-				matrix[1][0]="Coffee Nomad";
-				matrix[1][1]="https://cafenomad.tw/";
+				String nomad=(String)"Coffee Nomad";
+				String nurl=(String)"https://cafenomad.tw/";
+				matrix[1][0]=nomad;
+				matrix[1][1]=nurl;
 			}
 //			if(i==random) {
 ////				String nomad="Coffee Nomd";
