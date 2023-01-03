@@ -71,11 +71,14 @@ public class WebTree {
 	public WebNode getRoot() {
 		return root;
 	}
+	
 	public void ToSort() {
 		sort.add(getRoot());
 	}
+	
 	public double getScore() {
 		return root.nodeScore;
 	}
+	
 
 }

@@ -54,7 +54,7 @@ private ArrayList<WebNode> lst;
 	}
 	
 	
-	public String output() {
+	public String[][] output() {
 		int min=2;
 		int max=5;
 		int range=max-min+1;
@@ -75,7 +75,7 @@ private ArrayList<WebNode> lst;
 				matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();
 			}
 		}
-		return matrix[l][2];
+		return matrix;
 	}
 	
 }
