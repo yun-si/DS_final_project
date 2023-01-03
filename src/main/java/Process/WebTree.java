@@ -19,11 +19,11 @@ public class WebTree {
 		
 	}
 	
-	public void setPostOrderScore(ArrayList<Keyword> keywords) throws IOException{
+	public void setPostOrderScore(KeywordList keywords) throws IOException{
 		setPostOrderScore(root, keywords);
 	}
 	
-	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) throws IOException{
+	private void setPostOrderScore(WebNode startNode, KeywordList keywords) throws IOException{
 		//2. compute the score of children nodes via post-order, then setNodeScore for startNode
 
 		for(WebNode child:startNode.children) {
@@ -71,11 +71,14 @@ public class WebTree {
 	public WebNode getRoot() {
 		return root;
 	}
+	
 	public void ToSort() {
 		sort.add(getRoot());
 	}
+	
 	public double getScore() {
 		return root.nodeScore;
 	}
+	
 
 }

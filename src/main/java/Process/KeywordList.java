@@ -8,6 +8,13 @@ private LinkedList<Keyword> lst;
 		this.lst = new LinkedList<Keyword>();	
 	}
 	
+	public int size() {
+		return lst.size();
+	}
+	public Keyword get(int i) {
+		return lst.get(i);
+	}
+	
 	public void add(Keyword keyword){
 		
 		for(int i = 0; i < lst.size(); i++){
