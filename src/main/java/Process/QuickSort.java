@@ -59,29 +59,35 @@ private ArrayList<WebNode> lst;
 		int max=5;
 		int range=max-min+1;
 		int random=(int)(Math.random()*range)+min;
-		lst.add(random,new WebNode(new WebPage("Nomad","https://cafenomad.tw/")));
-		int l=lst.size();
+		if(lst!=null) {
+			lst.add(random,new WebNode(new WebPage("Nomad","https://cafenomad.tw/")));
+		}
+		int len=lst.size();
 		
-		String[][] matrix=new String[l][2];
+		String[][] matrix=new String[len][2];
 		
-		for(int i=1;i<l;i++) {
-			if(i==1) {
+		for(int i=0;i<len;i++) {
+			if(i==0) {
 				String nomad=(String)"Coffee Nomad";
 				String nurl=(String)"https://cafenomad.tw/";
-				matrix[1][0]=nomad;
-				matrix[1][1]=nurl;
+				matrix[0][0]=nomad;
+				matrix[0][1]=nurl;
+			}else {
+				matrix[i][0]=(String)"NA";
+				matrix[i][1]=(String)"NA";
 			}
+		}
 //			if(i==random) {
 ////				String nomad="Coffee Nomd";
 ////				String nurl="https://cafenomad.tw/";
 //				matrix[i][0]="Coffee Nomad";
 //				matrix[i][1]="https://cafenomad.tw/";
 //			}
-		else {
-				matrix[i][0]=(String)((WebNode) lst.get(i)).getPageName().toString();
-				matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();
-			}
-		}
+//		else {
+//				matrix[i][0]=(String)((WebNode) lst.get(i)).getPageName().toString();
+//				matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();
+//			}
+//		}
 		return matrix;
 	}
 	
