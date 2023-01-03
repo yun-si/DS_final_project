@@ -63,7 +63,9 @@ private ArrayList<WebNode> lst;
 		int l=lst.size();
 		
 		String[][] matrix=new String[l][2];
-		
+//		String[][] matrix=new String[1][2]; for testing
+		matrix[0][0] = (String)"Coffee Nomad";
+		matrix[0][1] = (String)"https://cafenomad.tw";
 		for(int i=1;i<l;i++) {
 			if(i==1) {
 				String nomad=(String)"Coffee Nomad";

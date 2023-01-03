@@ -50,15 +50,14 @@
 			QuickSort quickSort = new QuickSort();
 			String[][] result = (String[][]) quickSort.output();
 			
-			String[][] resul = new String[10][2];
-			String nomad=(String)"Coffee Nomad";
-			String nurl=(String)"https://cafenomad.tw";
-			result[1][0]=nomad;
-			result[1][1]=nurl;
+			//String nomad=(String)"Coffee Nomad";
+			//String nurl=(String)"https://cafenomad.tw";
+			//result[1][0]=nomad;
+			//result[1][1]=nurl;
 			
 			%>
 			
-			<a href='<%=result[1][1]%>'><%=result[1][0]%></a>
+			<a href='<%=result[0][1]%>'><%=result[0][0]%></a>
 			<br>
 			<%
 	%>
