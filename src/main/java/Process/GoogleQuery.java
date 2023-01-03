@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
 
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,6 +18,9 @@ public class GoogleQuery
 	public String searchKeyword;
 	public String url;
 	public String content;
+	public String title;
+	public String citeUrl;
+	public WordCounter counter;
 	
 	public GoogleQuery(String searchKeyword)
 	{
@@ -45,6 +49,8 @@ public class GoogleQuery
 		return retVal;
 	}
 	
+
+	
 	public HashMap<String, String> query() throws IOException
 	{
 		if(content == null)
@@ -72,8 +78,9 @@ public class GoogleQuery
 		{
 			try 
 			{
-				String citeUrl = li.select("a").get(0).attr("href");
-				String title = li.select("a").get(0).select(".vvjwJb").text();
+				citeUrl = li.select("a").get(0).attr("href");
+				counter = new WordCounter(citeUrl);
+				title = li.select("a").get(0).select(".vvjwJb").text();
 				
 				if(title.equals("")) 
 				{
@@ -92,4 +99,5 @@ public class GoogleQuery
 		}
 		return retVal;
 	}
+	
 }
