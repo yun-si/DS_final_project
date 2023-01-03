@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="Process.Keyword"%>
+<%@ page import="Process.QuickSort"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +41,28 @@
 			}catch(Exception e){
 				System.out.println("");
 			}
+			
 			%>
+			
+			
 			<a href="https://github.com/yun-si/DS_final_project" class="link">https://github.com/yun-si/DS_final_project</a>
+			<%
+			QuickSort quickSort = new QuickSort();
+			String[][] result = (String[][]) quickSort.output();
+			
+			String[][] resul = new String[10][2];
+			String nomad=(String)"Coffee Nomad";
+			String nurl=(String)"https://cafenomad.tw";
+			result[1][0]=nomad;
+			result[1][1]=nurl;
+			
+			%>
+			
+			<a href='<%=result[1][1]%>'><%=result[1][0]%></a>
+			<br>
+			<%
+	%>
+			
 	</div>
 	
 </body>
