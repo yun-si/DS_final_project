@@ -17,23 +17,23 @@
 	<div class="form-div">
 		<form id="search-form" name="search-form">
 			<div class="search-field-div">
-			<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'> 
+				<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'> 
 			</div>
 			<div class="search-button-div">
-			<!-- <a href ='http://localhost:8080/CoffeeShopSearch/SearchResult.jsp'> <img src="coffee_search_icon.png" class='search-img'/> </a> -->
-			<img src="coffee_search_icon.png" class='search-img' onclick="doSearch()" />
-			<%-- javaScript --%>
-			<script type="text/javascript">
-				function doSearch(){
-					
-					if(document.getElementById("inputKeyword").value == ""){
-						window.alert("Please Input Something!")
-					}else{
-						window.location.assign("http://localhost:8080/CoffeeShopSearch/SearchResult.jsp")
-						// window.alert("getInput")
+				<!-- <a href ='http://localhost:8080/CoffeeShopSearch/SearchResult.jsp'> <img src="coffee_search_icon.png" class='search-img'/> </a> -->
+				<img src="coffee_search_icon.png" class='search-img' onclick="doSearch()" />
+				<%-- javaScript --%>
+				<script type="text/javascript">
+					function doSearch(){
+						
+						if(document.getElementById("inputKeyword").value == ""){
+							window.alert("Please Input Something!")
+						}else{
+							window.location.assign("http://localhost:8080/CoffeeShopSearch/SearchResult.jsp")
+							// window.alert("getInput")
+						}
 					}
-				}
-			</script>
+				</script>
 			</div>
 		</form>
 	</div>
