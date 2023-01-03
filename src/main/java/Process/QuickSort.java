@@ -59,7 +59,7 @@ private ArrayList<WebNode> lst;
 		int max=5;
 		int range=max-min+1;
 		int random=(int)(Math.random()*range)+min;
-		lst.add(random,null);
+		lst.add(random,new WebNode(new WebPage("Nomad","https://cafenomad.tw/")));
 		int l=lst.size();
 		
 		String[][] matrix=new String[l][2];
