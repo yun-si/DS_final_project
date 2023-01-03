@@ -64,17 +64,18 @@ private ArrayList<WebNode> lst;
 		
 		String[][] matrix=new String[l][2];
 		
-		for(int i=0;i<l;i++) {
+		for(int i=1;i<l;i++) {
 			if(i==1) {
 				matrix[1][0]="Coffee Nomad";
 				matrix[1][1]="https://cafenomad.tw/";
 			}
-			if(i==random) {
-//				String nomad="Coffee Nomd";
-//				String nurl="https://cafenomad.tw/";
-				matrix[i][0]="Coffee Nomad";
-				matrix[i][1]="https://cafenomad.tw/";
-			}else {
+//			if(i==random) {
+////				String nomad="Coffee Nomd";
+////				String nurl="https://cafenomad.tw/";
+//				matrix[i][0]="Coffee Nomad";
+//				matrix[i][1]="https://cafenomad.tw/";
+//			}
+		else {
 				matrix[i][0]=(String)((WebNode) lst.get(i)).getPageName().toString();
 				matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();
 			}
