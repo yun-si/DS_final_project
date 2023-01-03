@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,6 +22,11 @@ public class Integration extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
+	public ArrayList<WebPage>page=new ArrayList<WebPage>();
+	public ArrayList<WebNode>node=new ArrayList<WebNode>();
+	public KeywordList key=new KeywordList();
+	
     public Integration() {
         super();
     }
@@ -40,6 +46,12 @@ public class Integration extends HttpServlet {
 		}
 		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
 		HashMap<String, String> query = google.query();
+
+//		for(int i =0;i<query.size();i++) {
+//			String title=query.get(i);
+//		}
+		
+		
 		
 		String[][] s = new String[query.size()][2];
 		request.setAttribute("query", s);
@@ -49,8 +61,35 @@ public class Integration extends HttpServlet {
 		    String value = entry.getValue();
 		    s[num][0] = key;
 		    s[num][1] = value;
+		    
+		    
+		    page.add(new WebPage(key,value));
+		    
 		    num++;
 		}
+		
+		
+		
+	    for(int i =0;i<page.size();i++) {
+	    	node.set(i,new WebNode((WebPage)page.get(i)));
+	    }
+	    
+	    QuickSort sort=new QuickSort();
+	    for(int j =0;j<node.size();j++) {
+	    	sort.add((WebNode)node.get(j));
+	    }
+//	    
+//	    for(int j=1;j<node.size();j++) {
+//	    	node.get(0).addChild(node.get(j));
+//	    	node.get(j).parent=node.get(0);
+//	    }
+//	    WebTree tree=new WebTree(page.get(0));
+//		
+////(keyword?)	    tree.setPostOrderScore(key);
+//	    tree.eularPrintTree();
+		
+	    
+		
 		request.getRequestDispatcher("SearchResult.jsp").forward(request, response); 
 		
 	}

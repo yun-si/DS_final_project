@@ -6,6 +6,10 @@ import java.util.ArrayList;
 public class WebNode {
 	
 	public WebNode parent;
+	
+//	public WebNode leftchild;
+//	public WebNode rightchild;
+	
 	public ArrayList<WebNode> children;
 	public WebPage webPage;	
 	public double nodeScore;
