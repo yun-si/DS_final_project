@@ -39,7 +39,28 @@ public class Integration extends HttpServlet {
 //    public static void main(String[] arg) {
 //    	KeywordList key=new KeywordList();
 //    	try{
-//			File input = new File("pro_input.txt");
+//			File input = new File("/pro_input.txt");
+////	    	if(input.exists()!=true) {
+//				key.add(new Keyword("咖啡廳",5.0));
+//				key.add(new Keyword("咖啡",5.0));
+//				key.add(new Keyword("coffee",5.0));
+//				key.add(new Keyword("Cafe",5.0));
+//				key.add(new Keyword("甜點",3.0));
+//				key.add(new Keyword("下午茶",3.0));
+//				key.add(new Keyword("文青",3.0));
+//				key.add(new Keyword("讀書",3.0));
+//				key.add(new Keyword("不限時",3.0));
+//				key.add(new Keyword("星巴克",2.0));
+//				key.add(new Keyword("路易莎",2.0));
+//				key.add(new Keyword("伯朗",2.0));
+//				for(int i =0;i<key.size();i++) {
+//					System.out.print(key.get(i).getName());
+//					System.out.print(key.get(i).getWeight());
+//				}
+//				return;
+//				
+//			}
+//	    	
 //			Scanner read = new Scanner(input);
 //			while(read.hasNextLine()) {
 //				String inputkey=read.next();
@@ -56,6 +77,7 @@ public class Integration extends HttpServlet {
 //		}catch(IOException e) {
 //			e.printStackTrace();
 //		}
+//
 //    }
     
 	/**
@@ -138,23 +160,39 @@ public class Integration extends HttpServlet {
 		HashMap<String, String> query = google.query();
 		
 		
-//		key = new KeywordList();
-//		try{
-//			File input = new File("pro_input.txt");
-//			Scanner read = new Scanner(input);
-//			while(read.hasNextLine()) {
-//				String inputkey=read.next();
-//				double value = (double)read.nextInt();
-//				Keyword keyword= new Keyword(inputkey, value);
-//				key.add(keyword);
-//			}
-//			read.close();
-//		}catch(FileNotFoundException e) {
-//			System.out.println("pro_input.txt Not Found");
-//			e.printStackTrace();
-//		}catch(IOException e) {
-//			e.printStackTrace();
-//		}
+		key = new KeywordList();
+		try{
+			File input = new File("pro_input.txt");
+			if(input.exists()!=true) {
+				key.add(new Keyword("咖啡廳",5.0));
+				key.add(new Keyword("咖啡",5.0));
+				key.add(new Keyword("coffee",5.0));
+				key.add(new Keyword("Cafe",5.0));
+				key.add(new Keyword("甜點",3.0));
+				key.add(new Keyword("下午茶",3.0));
+				key.add(new Keyword("文青",3.0));
+				key.add(new Keyword("讀書",3.0));
+				key.add(new Keyword("不限時",3.0));
+				key.add(new Keyword("星巴克",2.0));
+				key.add(new Keyword("路易莎",2.0));
+				key.add(new Keyword("伯朗",2.0));
+				return;
+				
+			}
+			Scanner read = new Scanner(input);
+			while(read.hasNextLine()) {
+				String inputkey=read.next();
+				double value = (double)read.nextInt();
+				Keyword keyword= new Keyword(inputkey, value);
+				key.add(keyword);
+			}
+			read.close();
+		}catch(FileNotFoundException e) {
+			System.out.println("pro_input.txt Not Found");
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 		
 		QuickSort q = new QuickSort();
 		for (String key : query.keySet()) {
