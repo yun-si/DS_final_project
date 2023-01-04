@@ -33,8 +33,6 @@ public class WebNode {
 	}
 	
 	
-	
-	
 	public void setNodeScore(KeywordList keywords) throws IOException{
 		webPage.setScore(keywords);
 		nodeScore = webPage.score;		

@@ -26,7 +26,7 @@ private ArrayList<WebNode> lst;
 	public void quickSort(int start, int end) {
 		WebNode left=lst.get(start);
 		WebNode right=lst.get(end);
-		if(left.nodeScore<right.nodeScore) {
+		if(left.nodeScore < right.nodeScore) {
 			int ind=start;
 			WebNode pivot=lst.get(end);
 			int index =start;

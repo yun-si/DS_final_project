@@ -24,6 +24,10 @@ public class GoogleQuery {
 	public static void main(String[] args) throws IOException {
 		GoogleQuery g = new GoogleQuery("貓");
 		HashMap<String, String> result = g.query();
+		QuickSort q = new QuickSort();
+		for(String key: result.keySet()) {
+			q.add(new WebNode(new WebPage(key, result.get(key))));
+		}
 		
 	}
 	
