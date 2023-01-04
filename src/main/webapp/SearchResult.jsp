@@ -1,8 +1,8 @@
 <%@page import="java.io.IOException"%>
-<%@page import="Process.Translator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="Process.Keyword"%>
+<%@page import="Process.Translator"%>
 <%@ page import="Process.QuickSort"%>
 <!DOCTYPE html>
 <html>
@@ -43,9 +43,7 @@
 			}
 			
 			%>
-			
-			
-			<a href="https://github.com/yun-si/DS_final_project" class="link">https://github.com/yun-si/DS_final_project</a>
+
 			<%
 			QuickSort quickSort = new QuickSort();
 			String[][] result = (String[][]) quickSort.output();

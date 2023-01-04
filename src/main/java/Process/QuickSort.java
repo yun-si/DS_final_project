@@ -15,12 +15,10 @@ private ArrayList<WebNode> lst;
 	}
 	
 	public void sort() {
-		if(lst.size() == 0)
-		{
+		if(lst.size() == 0)	{
 			System.out.println("InvalidOperation");
 		}
-		else 
-		{
+		else {
 			quickSort(0, lst.size()-1);
 		}
 	}

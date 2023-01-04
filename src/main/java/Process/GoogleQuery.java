@@ -13,8 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class GoogleQuery 
-{
+public class GoogleQuery {
 	public String searchKeyword;
 	public String url;
 	public String content;
@@ -22,14 +21,19 @@ public class GoogleQuery
 	public String citeUrl;
 	public WordCounter counter;
 	
-	public GoogleQuery(String searchKeyword)
-	{
-		this.searchKeyword = searchKeyword.concat("coffee");
-		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=20";
+	public static void main(String[] args) throws IOException {
+		GoogleQuery g = new GoogleQuery("貓");
+		HashMap<String, String> result = g.query();
+		
 	}
 	
-	private String fetchContent() throws IOException
-	{
+	public GoogleQuery(String searchKeyword) {
+//		this.searchKeyword = searchKeyword.concat("+coffee");
+		this.url = "http://www.google.com/search?q="+searchKeyword+ "+cafe" +"&oe=utf8&num=20";
+		System.out.println(url);
+	}
+	
+	private String fetchContent() throws IOException {
 		String retVal = "";
 
 		URL u = new URL(url);
@@ -42,8 +46,7 @@ public class GoogleQuery
 		BufferedReader bufReader = new BufferedReader(inReader);
 		String line = null;
 
-		while((line = bufReader.readLine()) != null)
-		{
+		while((line = bufReader.readLine()) != null) {
 			retVal += line;
 		}
 		return retVal;
@@ -51,10 +54,8 @@ public class GoogleQuery
 	
 
 	
-	public HashMap<String, String> query() throws IOException
-	{
-		if(content == null)
-		{
+	public HashMap<String, String> query() throws IOException {
+		if(content == null) {
 			content = fetchContent();
 		}
 
@@ -74,16 +75,13 @@ public class GoogleQuery
 		Elements lis = doc.select("div");
 		lis = lis.select(".kCrYT");
 		
-		for(Element li : lis)
-		{
-			try 
-			{
+		for(Element li : lis) {
+			try {
 				citeUrl = li.select("a").get(0).attr("href");
 				counter = new WordCounter(citeUrl);
 				title = li.select("a").get(0).select(".vvjwJb").text();
 				
-				if(title.equals("")) 
-				{
+				if(title.equals("")) {
 					continue;
 				}
 				
@@ -92,8 +90,7 @@ public class GoogleQuery
 				//put title and pair into HashMap
 				retVal.put(title, citeUrl);
 
-			} catch (IndexOutOfBoundsException e) 
-			{
+			} catch (IndexOutOfBoundsException e) {
 //				e.printStackTrace();
 			}
 		}
