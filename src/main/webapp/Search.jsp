@@ -23,21 +23,10 @@
 				<!-- <a href ='http://localhost:8080/CoffeeShopSearch/SearchResult.jsp'> <img src="coffee_search_icon.png" class='search-img'/> </a> -->
 				<img src="coffee_search_icon.png" class='search-img' onclick="doSearch()" />
 				<%-- javaScript --%>
-				<script type="text/javascript">
-					function doSearch(){
-						
-						if(document.getElementById("inputKeyword").value == ""){
-							window.alert("Please Input Something!")
-						}else{
-							window.location.assign("http://localhost:8080/CoffeeShopSearch/SearchResult.jsp")
-							// window.alert("getInput")
-						}
-					}
-				</script>
+
 			</div>
 		</form>
 	</div>
 </div>
-<%System.out.println("hello"); %>
 </body>
 </html>

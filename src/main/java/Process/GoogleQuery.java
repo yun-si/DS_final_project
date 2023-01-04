@@ -21,15 +21,25 @@ public class GoogleQuery {
 	public String citeUrl;
 	public WordCounter counter;
 	
-	public static void main(String[] args) throws IOException {
-		GoogleQuery g = new GoogleQuery("貓");
-		HashMap<String, String> result = g.query();
-		QuickSort q = new QuickSort();
-		for(String key: result.keySet()) {
-			q.add(new WebNode(new WebPage(key, result.get(key))));
-		}
-		
-	}
+//	public static void main(String[] args) throws IOException {
+//		GoogleQuery g = new GoogleQuery("貓");
+//		HashMap<String, String> result = g.query();
+//		QuickSort q = new QuickSort();
+//		for (String key : result.keySet()) {
+//			q.add(new WebNode(new WebPage(key, result.get(key))));
+//		}
+//
+//		q.sort();
+//		String[][] r = q.output();
+//		System.out.print(r.length);
+////		System.out.println("the first:" + r[0][0]);
+////		System.out.println("the first:" + r[0][1]);
+////		System.out.println("the second:" + r[1][0]);
+////
+////		QuickSort quickSort = new QuickSort();
+////		String[][] result_sorted = (String[][]) quickSort.output();
+//		
+//	}
 	
 	public GoogleQuery(String searchKeyword) {
 //		this.searchKeyword = searchKeyword.concat("+coffee");

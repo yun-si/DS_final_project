@@ -34,10 +34,73 @@ public class Integration extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		response.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/htm");
+//		if(request.getParameter("inputKeyword")== null) {
+//			String requestUri = request.getRequestURI();
+//			request.setAttribute("requestUri", requestUri);
+//			request.getRequestDispatcher("Search.jsp").forward(request, response);
+//			return;
+//		}
+//		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
+////		HashMap<String, String> query = google.query();
+//
+////		HashMap<String, String> result = g.query();
+//		HashMap<String, String> result = google.query();
+//		QuickSort q = new QuickSort();
+//		for (String key : result.keySet()) {
+//			q.add(new WebNode(new WebPage(key, result.get(key))));
+//		}
+//
+//		q.sort();
+//		String[][] r = q.output();
+//		
+//		System.out.println(r.length);
+//		request.setAttribute("query", r);
+////		int num = 0;
+////		for(Entry<String, String> entry : result.entrySet()) {
+////		    String key = entry.getKey();
+////		    String value = entry.getValue();
+////		    s[num][0] = key;
+////		    s[num][1] = value;
+////		    
+////		    
+////		    page.add(new WebPage(key,value));
+////		    
+////		    num++;
+////		}
+////		
+////		
+////		
+////	    for(int i =0;i<page.size();i++) {
+////	    	node.set(i,new WebNode((WebPage)page.get(i)));
+////	    }
+////	    
+////	    QuickSort sort=new QuickSort();
+////	    for(int j =0;j<node.size();j++) {
+////	    	sort.add((WebNode)node.get(j));
+////	    }
+////	    
+////	    for(int j=1;j<node.size();j++) {
+////	    	node.get(0).addChild(node.get(j));
+////	    	node.get(j).parent=node.get(0);
+////	    }
+////	    WebTree tree=new WebTree(page.get(0));
+////		
+//////(keyword?)	    tree.setPostOrderScore(key);
+////	    tree.eularPrintTree();
+//		
+//	
+//		request.getRequestDispatcher("SearchResult.jsp").forward(request, response); 
+//		
+//	}
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/htm");
+		response.setContentType("text/html");
 		if(request.getParameter("inputKeyword")== null) {
 			String requestUri = request.getRequestURI();
 			request.setAttribute("requestUri", requestUri);
@@ -46,12 +109,6 @@ public class Integration extends HttpServlet {
 		}
 		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
 		HashMap<String, String> query = google.query();
-
-//		for(int i =0;i<query.size();i++) {
-//			String title=query.get(i);
-//		}
-		
-		
 		
 		String[][] s = new String[query.size()][2];
 		request.setAttribute("query", s);
@@ -61,35 +118,8 @@ public class Integration extends HttpServlet {
 		    String value = entry.getValue();
 		    s[num][0] = key;
 		    s[num][1] = value;
-		    
-		    
-		    page.add(new WebPage(key,value));
-		    
 		    num++;
 		}
-		
-		
-		
-	    for(int i =0;i<page.size();i++) {
-	    	node.set(i,new WebNode((WebPage)page.get(i)));
-	    }
-	    
-	    QuickSort sort=new QuickSort();
-	    for(int j =0;j<node.size();j++) {
-	    	sort.add((WebNode)node.get(j));
-	    }
-//	    
-//	    for(int j=1;j<node.size();j++) {
-//	    	node.get(0).addChild(node.get(j));
-//	    	node.get(j).parent=node.get(0);
-//	    }
-//	    WebTree tree=new WebTree(page.get(0));
-//		
-////(keyword?)	    tree.setPostOrderScore(key);
-//	    tree.eularPrintTree();
-		
-	    
-		
 		request.getRequestDispatcher("SearchResult.jsp").forward(request, response); 
 		
 	}

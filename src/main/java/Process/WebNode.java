@@ -29,7 +29,7 @@ public class WebNode {
 		return webPage;
 	}
 	public String getPageName() {
-		return getPage().name;
+		return webPage.name;
 	}
 	
 	
