@@ -22,12 +22,6 @@
 					<input type="text" class="text-field" maxlength="100"
 						name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'>
 				</div>
-				<div class="search-button-div">
-					<a href='http://localhost:8080/CoffeeShopSearch/SearchResult.jsp'>
-						<img src="coffee_search_icon.png" class='search-img' />
-					</a>
-				</div>
-
 			</form>
 		</div>
 	</div>
@@ -65,9 +59,6 @@
 		//q.sort();
 		//String[][] r = q.output();
 		String[][] r = (String[][]) request.getAttribute("query");
-		//System.out.println("the first:" + r[0][0]);
-		//System.out.println("the first:" + r[0][1]);
-		//System.out.println("the last:" + r[19][0]);
 
 		for (int i = 0; i < r.length; i++) {
 			String s = r[i][1];

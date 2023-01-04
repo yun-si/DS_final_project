@@ -60,7 +60,7 @@ private ArrayList<WebNode> lst;
 		if(lst.size() != 0) {
 //			System.out.println("origin");
 //			System.out.println(lst.size());
-			lst.add(random, new WebNode(new WebPage("Nomad","https://cafenomad.tw")));
+			lst.add(random, new WebNode(new WebPage("Coffee Nomad", "/url?q=https://cafenomad.tw")));
 //			lst.add(new WebNode(new WebPage("Nomad","https://cafenomad.tw/")));
 		}
 		int len = lst.size();

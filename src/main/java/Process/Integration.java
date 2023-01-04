@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.ArrayList;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +29,7 @@ public class Integration extends HttpServlet {
 	
 	public ArrayList<WebPage>page=new ArrayList<WebPage>();
 	public ArrayList<WebNode>node=new ArrayList<WebNode>();
-	public KeywordList key=new KeywordList();
+	public KeywordList key;
 	
     public Integration() {
         super();
@@ -110,16 +114,49 @@ public class Integration extends HttpServlet {
 		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
 		HashMap<String, String> query = google.query();
 		
-		String[][] s = new String[query.size()][2];
-		request.setAttribute("query", s);
-		int num = 0;
-		for(Entry<String, String> entry : query.entrySet()) {
-		    String key = entry.getKey();
-		    String value = entry.getValue();
-		    s[num][0] = key;
-		    s[num][1] = value;
-		    num++;
+		
+		key = new KeywordList();
+		try{
+			File input = new File("pro_input.txt");
+			Scanner read = new Scanner(input);
+			while(read.hasNextLine()) {
+				String inputkey=read.next();
+				double value = read.nextDouble();
+				Keyword keyword = new Keyword(inputkey, value);
+			}
+			read.close();
+		}catch(FileNotFoundException e) {
+			System.out.println("pro_input.txt Not Found");
+			e.printStackTrace();
 		}
+		
+		QuickSort q = new QuickSort();
+		for (String key : query.keySet()) {
+			String url = query.get(key);
+			int trash = url.indexOf("&sa");
+			if(trash != -1) {
+				url = url.substring(0, trash);
+			}
+			q.add(new WebNode(new WebPage(key, url)));
+		}
+
+		q.sort();
+		String[][] s = q.output();
+//		String[][] s = new String[query.size()][2];
+		request.setAttribute("query", s);
+		System.out.println("the first:" + s[0][0]);
+		System.out.println("the first:" + s[0][1]);
+		System.out.println("the second:" + s[1][0]);
+		System.out.println("the second:" + s[1][1]);
+		
+//		int num = 0;
+//		for(Entry<String, String> entry : query.entrySet()) {
+//		    String key = entry.getKey();
+//		    String value = entry.getValue();
+//		    s[num][0] = key;
+//		    s[num][1] = value;
+//		    num++;
+//		}
 		request.getRequestDispatcher("SearchResult.jsp").forward(request, response); 
 		
 	}

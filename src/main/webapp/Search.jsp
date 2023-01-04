@@ -19,12 +19,6 @@
 			<div class="search-field-div">
 				<input type="text" class="text-field" maxlength="100" name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'> 
 			</div>
-			<div class="search-button-div">
-				<!-- <a href ='http://localhost:8080/CoffeeShopSearch/SearchResult.jsp'> <img src="coffee_search_icon.png" class='search-img'/> </a> -->
-				<img src="coffee_search_icon.png" class='search-img' onclick="doSearch()" />
-				<%-- javaScript --%>
-
-			</div>
 		</form>
 	</div>
 </div>
