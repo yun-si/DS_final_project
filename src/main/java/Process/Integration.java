@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import java.util.ArrayList;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -35,6 +36,28 @@ public class Integration extends HttpServlet {
         super();
     }
 
+//    public static void main(String[] arg) {
+//    	KeywordList key=new KeywordList();
+//    	try{
+//			File input = new File("pro_input.txt");
+//			Scanner read = new Scanner(input);
+//			while(read.hasNextLine()) {
+//				String inputkey=read.next();
+//				double value = (double)read.nextInt();
+//				Keyword keyword= new Keyword(inputkey, value);
+//				key.add(keyword);
+//				System.out.print(keyword.getName());
+//				System.out.println();
+//			}
+//			read.close();
+//		}catch(FileNotFoundException e) {
+////			System.out.println("pro_input.txt Not Found");
+//			e.printStackTrace();
+//		}catch(IOException e) {
+//			e.printStackTrace();
+//		}
+//    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -115,20 +138,23 @@ public class Integration extends HttpServlet {
 		HashMap<String, String> query = google.query();
 		
 		
-		key = new KeywordList();
-		try{
-			File input = new File("pro_input.txt");
-			Scanner read = new Scanner(input);
-			while(read.hasNextLine()) {
-				String inputkey=read.next();
-				double value = read.nextDouble();
-				Keyword keyword = new Keyword(inputkey, value);
-			}
-			read.close();
-		}catch(FileNotFoundException e) {
-			System.out.println("pro_input.txt Not Found");
-			e.printStackTrace();
-		}
+//		key = new KeywordList();
+//		try{
+//			File input = new File("pro_input.txt");
+//			Scanner read = new Scanner(input);
+//			while(read.hasNextLine()) {
+//				String inputkey=read.next();
+//				double value = (double)read.nextInt();
+//				Keyword keyword= new Keyword(inputkey, value);
+//				key.add(keyword);
+//			}
+//			read.close();
+//		}catch(FileNotFoundException e) {
+//			System.out.println("pro_input.txt Not Found");
+//			e.printStackTrace();
+//		}catch(IOException e) {
+//			e.printStackTrace();
+//		}
 		
 		QuickSort q = new QuickSort();
 		for (String key : query.keySet()) {
