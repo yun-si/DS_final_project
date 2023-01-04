@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.ArrayList;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +29,7 @@ public class Integration extends HttpServlet {
 	
 	public ArrayList<WebPage>page=new ArrayList<WebPage>();
 	public ArrayList<WebNode>node=new ArrayList<WebNode>();
-	public KeywordList key=new KeywordList();
+	public KeywordList key;
 	
     public Integration() {
         super();
@@ -51,6 +55,21 @@ public class Integration extends HttpServlet {
 //			String title=query.get(i);
 //		}
 		
+		
+		key=new KeywordList();
+		try{
+			File input=new File("pro_input.txt");
+			Scanner read=new Scanner(input);
+			while(read.hasNextLine()) {
+				String inputkey=read.next();
+				double value=read.nextDouble();
+				Keyword keyword=new Keyword(inputkey,value);
+				;
+			}
+			read.close();
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		
 		String[][] s = new String[query.size()][2];
