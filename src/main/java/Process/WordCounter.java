@@ -105,30 +105,30 @@ public class WordCounter {
     }
     
 
-   public int countKeyword(String keyword) throws IOException,FileNotFoundException{
-		if (content == null){
-			content = fetchContent();
-			System.out.println("success get content");	
-		}
+    public int countKeyword(String keyword) throws IOException,FileNotFoundException{
+ 		if (content == null){
+ 			content = fetchContent();
+ 			System.out.println("success get content");	
+ 		}
+ 		
+ 		
+ 		content = content.toUpperCase();
+ 		keyword = keyword.toUpperCase();
+ 	
+ 	    int retVal = 0; 
 
-		
-		this.name = name.toUpperCase();
-		keyword = keyword.toUpperCase();
-	
-	    int retVal = 0; 
-
-		int n = name.length();
-		int m = keyword.length();
-		int i = BoyerMoore(name, keyword);
-		while(i != -1) {
-			retVal++;
-			name=name.substring(i+m,n-1);
-			n = name.length();
-			i=BoyerMoore(name, keyword);
-		}
-		
-		return retVal;
-    }
+ 		int n=content.length();
+ 		int m=keyword.length();
+ 		int i=BoyerMoore(content,keyword);
+ 		while(i!=-1) {
+ 			retVal++;
+ 			content=content.substring(i+m,n-1);
+ 			n=content.length();
+ 			i=BoyerMoore(content,keyword);
+ 		}
+ 		
+ 		return retVal;
+     }
 
 
 
