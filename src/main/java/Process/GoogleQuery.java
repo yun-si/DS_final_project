@@ -93,8 +93,9 @@ public class GoogleQuery {
 		for(Element li : lis) {
 			try {
 				citeUrl = li.select("a").get(0).attr("href");
-				counter = new WordCounter(citeUrl);
+				
 				title = li.select("a").get(0).select(".vvjwJb").text();
+				counter = new WordCounter(citeUrl);
 				
 				if(title.equals("")) {
 					continue;

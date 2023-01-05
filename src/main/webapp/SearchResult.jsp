@@ -62,7 +62,7 @@
 
 		for (int i = 0; i < r.length; i++) {
 			String s = r[i][1];
-			s = s.substring(7);
+			//s = s.substring(7);
 		%>
 		
 		<a href=<%=s%>><%=r[i][0]%> </a><br><br>

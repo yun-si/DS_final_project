@@ -21,6 +21,8 @@ public class WebNode {
 		this.url=webPage.getUrl();
 		
 		this.children = new ArrayList<WebNode>();
+		
+		
 	}
 	
 	

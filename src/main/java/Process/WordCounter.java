@@ -1,6 +1,6 @@
 package Process;
 import java.io.BufferedReader;
-
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,16 +11,25 @@ import java.net.URLDecoder;
 public class WordCounter {
 	private String urlStr;
     private String content;
+    private String name;
     
     public WordCounter(String urlStr){
     	this.urlStr = urlStr;
+//    	this.name=name;
     }
     
-    private String fetchContent() throws IOException{
+    private String fetchContent() throws IOException,FileNotFoundException{
 		URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
+		conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
+		conn.setRequestProperty("Accept", "*/*");
+		conn.setDoInput(true);
+		conn.setDoOutput(false);
+		
 		InputStream in = conn.getInputStream();
-		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
+
+		
 	
 		String retVal = "";
 	
@@ -77,9 +86,10 @@ public class WordCounter {
             return a;
     }
     
-   public int countKeyword(String keyword) throws IOException{
+   public int countKeyword(String keyword) throws IOException,FileNotFoundException{
 		if (content == null){
-		    content = fetchContent();
+				content = fetchContent();
+			
 		}
 		
 		
@@ -96,6 +106,30 @@ public class WordCounter {
 			content=content.substring(i+m,n-1);
 			n=content.length();
 			i=BoyerMoore(content,keyword);
+		}
+		
+		return retVal;
+    }
+   
+   public int countKeyword1(String keyword) throws IOException,FileNotFoundException{
+//		if (content == null){
+//		    content = fetchContent();
+//		}
+		
+		
+		name = name.toUpperCase();
+		keyword = keyword.toUpperCase();
+	
+	    int retVal = 0; 
+
+		int n=name.length();
+		int m=keyword.length();
+		int i=BoyerMoore(name,keyword);
+		while(i!=-1) {
+			retVal++;
+			name=name.substring(i+m,n);
+			n=name.length();
+			i=BoyerMoore(name,keyword);
 		}
 		
 		return retVal;
