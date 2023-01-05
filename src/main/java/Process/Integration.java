@@ -145,7 +145,7 @@ public class Integration extends HttpServlet {
 //		
 //	}
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException {
     	response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
