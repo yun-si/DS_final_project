@@ -43,8 +43,7 @@ public class GoogleQuery {
 //	}
 	
 	public GoogleQuery(String searchKeyword) {
-//		this.searchKeyword = searchKeyword.concat("+coffee");
-		this.url = "http://www.google.com/search?q="+searchKeyword+ "+cafe" +"&oe=utf8&num=20";
+		this.url = "http://www.google.com/search?q="+searchKeyword+ "+咖啡廳" +"&oe=utf8&num=20";
 		System.out.println(url);
 	}
 	

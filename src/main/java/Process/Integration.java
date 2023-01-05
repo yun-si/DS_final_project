@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 /**
  * Servlet implementation class Integration
  */
@@ -79,73 +81,7 @@ public class Integration extends HttpServlet {
 //
 //    }
     
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setCharacterEncoding("UTF-8");
-//		request.setCharacterEncoding("UTF-8");
-//		response.setContentType("text/htm");
-//		if(request.getParameter("inputKeyword")== null) {
-//			String requestUri = request.getRequestURI();
-//			request.setAttribute("requestUri", requestUri);
-//			request.getRequestDispatcher("Search.jsp").forward(request, response);
-//			return;
-//		}
-//		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
-////		HashMap<String, String> query = google.query();
-//
-////		HashMap<String, String> result = g.query();
-//		HashMap<String, String> result = google.query();
-//		QuickSort q = new QuickSort();
-//		for (String key : result.keySet()) {
-//			q.add(new WebNode(new WebPage(key, result.get(key))));
-//		}
-//
-//		q.sort();
-//		String[][] r = q.output();
-//		
-//		System.out.println(r.length);
-//		request.setAttribute("query", r);
-////		int num = 0;
-////		for(Entry<String, String> entry : result.entrySet()) {
-////		    String key = entry.getKey();
-////		    String value = entry.getValue();
-////		    s[num][0] = key;
-////		    s[num][1] = value;
-////		    
-////		    
-////		    page.add(new WebPage(key,value));
-////		    
-////		    num++;
-////		}
-////		
-////		
-////		
-////	    for(int i =0;i<page.size();i++) {
-////	    	node.set(i,new WebNode((WebPage)page.get(i)));
-////	    }
-////	    
-////	    QuickSort sort=new QuickSort();
-////	    for(int j =0;j<node.size();j++) {
-////	    	sort.add((WebNode)node.get(j));
-////	    }
-////	    
-////	    for(int j=1;j<node.size();j++) {
-////	    	node.get(0).addChild(node.get(j));
-////	    	node.get(j).parent=node.get(0);
-////	    }
-////	    WebTree tree=new WebTree(page.get(0));
-////		
-//////(keyword?)	    tree.setPostOrderScore(key);
-////	    tree.eularPrintTree();
-//		
-//	
-//		request.getRequestDispatcher("SearchResult.jsp").forward(request, response); 
-//		
-//	}
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException {
     	response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
@@ -155,7 +91,23 @@ public class Integration extends HttpServlet {
 			request.getRequestDispatcher("Search.jsp").forward(request, response);
 			return;
 		}
+<<<<<<< HEAD
 		
+=======
+		String inputKeyword = request.getParameter("inputKeyword");
+		Translator translator = new Translator();
+		inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+//		try {
+//			inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+//		} catch (IOException e) {
+//			System.out.println("IOException");
+//		} catch (Exception e) {
+//			System.out.println("");
+//		}
+		
+		GoogleQuery google = new GoogleQuery(inputKeyword);
+		HashMap<String, String> query = google.query();
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		
 		
 		key = new KeywordList();
@@ -238,10 +190,12 @@ public class Integration extends HttpServlet {
 		QuickSort q = new QuickSort();
 		for (String key : query.keySet()) {
 			String url = query.get(key);
+			url = url.substring(7);
 			int trash = url.indexOf("&sa");
 			if(trash != -1) {
 				url = url.substring(0, trash);
 			}
+<<<<<<< HEAD
 		
 //		for(WebNode nod:node) {
 //			q.add(nod);
@@ -251,31 +205,37 @@ public class Integration extends HttpServlet {
 		
 		for(WebNode wnode:node) {
 			q.add(wnode);
+=======
+			String url_de = URLDecoder.decode(url, "UTF-8");
+			q.add(new WebNode(new WebPage(key, url_de)));
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		}
 
+<<<<<<< HEAD
 
 		q.sort();
 		
+=======
+//		q.sort(key);
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		String[][] s = q.output();
+<<<<<<< HEAD
 		System.out.println("s len");
 		System.out.print(s.length);
 		
 //		String[][] s = new String[query.size()][2];
+=======
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		request.setAttribute("query", s);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 //		System.out.println("the first:" + s[0][0]);
 //		System.out.println("the first:" + s[0][1]);
 //		System.out.println("the second:" + s[1][0]);
 //		System.out.println("the second:" + s[1][1]);
 		
-//		int num = 0;
-//		for(Entry<String, String> entry : query.entrySet()) {
-//		    String key = entry.getKey();
-//		    String value = entry.getValue();
-//		    s[num][0] = key;
-//		    s[num][1] = value;
-//		    num++;
-//		}
 		request.getRequestDispatcher("SearchResult.jsp").forward(request, response); 
 		
 	}
@@ -289,4 +249,3 @@ public class Integration extends HttpServlet {
 	}
 
 }
-

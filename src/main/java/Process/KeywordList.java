@@ -33,13 +33,14 @@ private LinkedList<Keyword> lst;
 		lst.add(keyword);	
 	}
 	
-	private void printKeywordList(LinkedList<Keyword> kLst){
+	public void printKeywordList(){
 		StringBuilder sb = new StringBuilder();
-		for(int i = 0; i < kLst.size(); i++){
-			Keyword k = kLst.get(i);
+		for(int i = 0; i < lst.size(); i++){
+			Keyword k = lst.get(i);
 			if(i > 0)sb.append(" ");
 			sb.append(k.toString());
 		}
+		System.out.println("keywordList: ");
 		System.out.println(sb.toString());
 	}
 

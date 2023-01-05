@@ -41,7 +41,8 @@ public class WebNode {
 		
 		for(WebNode child : children){
 			nodeScore += child.nodeScore;
-		}		
+		}
+		System.out.println(nodeScore);
 	}
 	
 	public void addChild(WebNode child){

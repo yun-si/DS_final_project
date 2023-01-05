@@ -80,7 +80,9 @@ body{
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
-
+	
+	-o-object-fit: fill; /*meaning?*/
+	object-fit: fill; /*meaning?*/
 }
 
 .search-field-div{
@@ -110,7 +112,7 @@ body{
 	object-fit: fill; /*meaning?*/
 }
 
-.search-button-div{
+/*.search-button-div{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -129,7 +131,7 @@ body{
   background-color: rgb(216, 205, 172);
 }
 */
-.search-button{
+/*.search-button{
 	border: none;
 	background-color: transparent;
 	text-align: center;
@@ -144,7 +146,7 @@ body{
 	border: none;
 }
 
-/*.select-div{
+.select-div{
 	background-color: yellow;
 	width: 100px;
 	height: 100px;
