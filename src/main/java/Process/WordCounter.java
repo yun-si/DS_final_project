@@ -88,8 +88,8 @@ public class WordCounter {
     
    public int countKeyword(String keyword) throws IOException,FileNotFoundException{
 		if (content == null){
-				content = fetchContent();
-			
+			content = fetchContent();
+			System.out.println("success get content");	
 		}
 		
 		
