@@ -40,7 +40,7 @@ public class Integration extends HttpServlet {
 //    	KeywordList key=new KeywordList();
 //    	try{
 //			File input = new File("/pro_input.txt");
-////	    	if(input.exists()!=true) {
+//	    	if(input.exists()!=true) {
 //				key.add(new Keyword("咖啡廳",5.0));
 //				key.add(new Keyword("咖啡",5.0));
 //				key.add(new Keyword("coffee",5.0));
@@ -53,24 +53,21 @@ public class Integration extends HttpServlet {
 //				key.add(new Keyword("星巴克",2.0));
 //				key.add(new Keyword("路易莎",2.0));
 //				key.add(new Keyword("伯朗",2.0));
-//				for(int i =0;i<key.size();i++) {
-//					System.out.print(key.get(i).getName());
-//					System.out.print(key.get(i).getWeight());
-//				}
-//				return;
 //				
+//				
+//			}else {
+//				Scanner read = new Scanner(input);
+//				while(read.hasNextLine()) {
+//					String inputkey=read.next();
+//					double value = (double)read.nextInt();
+//					Keyword keyword= new Keyword(inputkey, value);
+//					key.add(keyword);
+//					System.out.print(keyword.getName());
+//					System.out.println();
+//				}
+//				read.close();
 //			}
-//	    	
-//			Scanner read = new Scanner(input);
-//			while(read.hasNextLine()) {
-//				String inputkey=read.next();
-//				double value = (double)read.nextInt();
-//				Keyword keyword= new Keyword(inputkey, value);
-//				key.add(keyword);
-//				System.out.print(keyword.getName());
-//				System.out.println();
-//			}
-//			read.close();
+//
 //		}catch(FileNotFoundException e) {
 ////			System.out.println("pro_input.txt Not Found");
 //			e.printStackTrace();
@@ -176,17 +173,18 @@ public class Integration extends HttpServlet {
 				key.add(new Keyword("星巴克",2.0));
 				key.add(new Keyword("路易莎",2.0));
 				key.add(new Keyword("伯朗",2.0));
-				return;
 				
+			}else {
+				Scanner read = new Scanner(input);
+				while(read.hasNextLine()) {
+					String inputkey=read.next();
+					double value = (double)read.nextInt();
+					Keyword keyword= new Keyword(inputkey, value);
+					key.add(keyword);
+				}
+				read.close();
 			}
-			Scanner read = new Scanner(input);
-			while(read.hasNextLine()) {
-				String inputkey=read.next();
-				double value = (double)read.nextInt();
-				Keyword keyword= new Keyword(inputkey, value);
-				key.add(keyword);
-			}
-			read.close();
+			
 		}catch(FileNotFoundException e) {
 			System.out.println("pro_input.txt Not Found");
 			e.printStackTrace();
