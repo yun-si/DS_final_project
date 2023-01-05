@@ -12,14 +12,15 @@ public class WebPage {
 	public WebPage(String name, String url){
 		this.url = url;
 		this.name = name;
-		this.counter = new WordCounter(url);	
+		this.counter = new WordCounter(url, name);
+		
 	}
 	
 	public void setScore(KeywordList keywords) throws IOException{
 		score = 0;
 		//1. calculate score
 		for(int i =0;i<keywords.size();i++) {
-			score+=counter.countKeyword(keywords.get(i).getName())*keywords.get(i).getWeight();
+			score += counter.countKeyword(keywords.get(i).getName())*keywords.get(i).getWeight();
 		}
 	}
 	

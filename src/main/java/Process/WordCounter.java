@@ -11,27 +11,33 @@ import java.net.URLDecoder;
 public class WordCounter {
 	private String urlStr;
     private String content;
+    private String name;
     
     public WordCounter(String urlStr){
     	this.urlStr = urlStr;
     }
     
-    private String fetchContent() throws IOException{
-		URL url = new URL(this.urlStr);
-		URLConnection conn = url.openConnection();
-		InputStream in = conn.getInputStream();
-		BufferedReader br = new BufferedReader(new InputStreamReader(in));
-	
-		String retVal = "";
-	
-		String line = null;
-		
-		while ((line = br.readLine()) != null){
-		    retVal = retVal + line + "\n";
-		}
-	
-		return retVal;
+    public WordCounter(String urlStr, String name){
+    	this.urlStr = urlStr;
+    	this.name = name;
     }
+    
+//    private String fetchContent() throws IOException{
+//		URL url = new URL(this.urlStr);
+//		URLConnection conn = url.openConnection();
+//		InputStream in = conn.getInputStream();
+//		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+//	
+//		String retVal = "";
+//	
+//		String line = null;
+//		
+//		while ((line = br.readLine()) != null){
+//		    retVal = retVal + line + "\n";
+//		}
+//	
+//		return retVal;
+//    }
     
     public int BoyerMoore(String T, String P){
           int i = P.length() -1;
@@ -77,28 +83,51 @@ public class WordCounter {
             return a;
     }
     
-   public int countKeyword(String keyword) throws IOException{
-		if (content == null){
-		    content = fetchContent();
-		}
+    public int countKeyword(String keyword) throws IOException{
+//		if (content == null){
+//		    content = fetchContent();
+//		}
 		
 		
-		content = content.toUpperCase();
+		this.name = name.toUpperCase();
 		keyword = keyword.toUpperCase();
 	
 	    int retVal = 0; 
 
-		int n=content.length();
-		int m=keyword.length();
-		int i=BoyerMoore(content,keyword);
-		while(i!=-1) {
+		int n = name.length();
+		int m = keyword.length();
+		int i = BoyerMoore(name, keyword);
+		while(i != -1) {
 			retVal++;
-			content=content.substring(i+m,n-1);
-			n=content.length();
-			i=BoyerMoore(content,keyword);
+			name=name.substring(i+m,n-1);
+			n = name.length();
+			i=BoyerMoore(name, keyword);
 		}
 		
 		return retVal;
     }
+//   public int countKeyword(String keyword) throws IOException{
+//		if (content == null){
+//		    content = fetchContent();
+//		}
+//		
+//		
+//		content = content.toUpperCase();
+//		keyword = keyword.toUpperCase();
+//	
+//	    int retVal = 0; 
+//
+//		int n=content.length();
+//		int m=keyword.length();
+//		int i=BoyerMoore(content,keyword);
+//		while(i!=-1) {
+//			retVal++;
+//			content=content.substring(i+m,n-1);
+//			n=content.length();
+//			i=BoyerMoore(content,keyword);
+//		}
+//		
+//		return retVal;
+//    }
 
 }

@@ -151,9 +151,8 @@ public class Integration extends HttpServlet {
 			q.add(new WebNode(new WebPage(key, url_de)));
 		}
 
-		q.sort();
+//		q.sort(key);
 		String[][] s = q.output();
-//		String[][] s = new String[query.size()][2];
 		request.setAttribute("query", s);
 //		System.out.println("the first:" + s[0][0]);
 //		System.out.println("the first:" + s[0][1]);
