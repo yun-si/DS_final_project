@@ -17,7 +17,7 @@
 	<div class="search-div">
 		<h1 class="heading">Coffee Master</h1>
 		<div class="form-div">
-			<form id="search-form" name="search-form">
+			<form id="search-form" name="search-form" class="form">
 				<div class="search-field-div">
 					<input type="text" class="text-field" maxlength="100"
 						name="inputKeyword" id="inputKeyword" placeholder='請輸入關鍵字'>
@@ -62,10 +62,9 @@
 
 		for (int i = 0; i < r.length; i++) {
 			String s = r[i][1];
-			s = s.substring(7);
 		%>
 		
-		<a href=<%=s%>><%=r[i][0]%> </a><br><br>
+		<a class="link" href=<%=s%>><%=r[i][0]%> </a>
 		<%
 		}
 		System.out.println("finished");
