@@ -91,23 +91,7 @@ public class Integration extends HttpServlet {
 			request.getRequestDispatcher("Search.jsp").forward(request, response);
 			return;
 		}
-<<<<<<< HEAD
 		
-=======
-		String inputKeyword = request.getParameter("inputKeyword");
-		Translator translator = new Translator();
-		inputKeyword = translator.translate("", "zh-TW", inputKeyword);
-//		try {
-//			inputKeyword = translator.translate("", "zh-TW", inputKeyword);
-//		} catch (IOException e) {
-//			System.out.println("IOException");
-//		} catch (Exception e) {
-//			System.out.println("");
-//		}
-		
-		GoogleQuery google = new GoogleQuery(inputKeyword);
-		HashMap<String, String> query = google.query();
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		
 		
 		key = new KeywordList();
@@ -195,7 +179,7 @@ public class Integration extends HttpServlet {
 			if(trash != -1) {
 				url = url.substring(0, trash);
 			}
-<<<<<<< HEAD
+
 		
 //		for(WebNode nod:node) {
 //			q.add(nod);
@@ -205,32 +189,23 @@ public class Integration extends HttpServlet {
 		
 		for(WebNode wnode:node) {
 			q.add(wnode);
-=======
-			String url_de = URLDecoder.decode(url, "UTF-8");
-			q.add(new WebNode(new WebPage(key, url_de)));
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		}
+		
 
-<<<<<<< HEAD
 
 		q.sort();
 		
-=======
 //		q.sort(key);
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
+
 		String[][] s = q.output();
-<<<<<<< HEAD
+
 		System.out.println("s len");
 		System.out.print(s.length);
 		
 //		String[][] s = new String[query.size()][2];
-=======
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		request.setAttribute("query", s);
-<<<<<<< HEAD
+
 		
-=======
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 //		System.out.println("the first:" + s[0][0]);
 //		System.out.println("the first:" + s[0][1]);
 //		System.out.println("the second:" + s[1][0]);

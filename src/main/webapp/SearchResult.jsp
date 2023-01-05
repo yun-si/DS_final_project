@@ -29,23 +29,46 @@
 	<div class="result_div">
 
 		<%
+		Keyword keyword = new Keyword(request.getParameter("inputKeyword"), 3);
+		String keywordName = keyword.getName();
+		Translator translator = new Translator();
+
+		try {
+			System.out.println("Translated text: " + translator.translate("", "zh-TW", keywordName));
+		} catch (IOException e) {
+			System.out.println("IOException");
+		} catch (Exception e) {
+			System.out.println("");
+		}
+		%>
+		
+		<%
 		GoogleQuery g = new GoogleQuery(request.getParameter("inputKeyword"));
 		%>
-
+		<script type="text/javascript">
+			
+		</script>
 		<%
+		//GoogleQuery g = new GoogleQuery("貓");
+		//HashMap<String, String> result = g.query();
+		//QuickSort q = new QuickSort();
+		//for (String key : result.keySet()) {
+			//q.add(new WebNode(new WebPage(key, result.get(key))));
+		//}
+
+		//q.sort();
+		//String[][] r = q.output();
 		String[][] r = (String[][]) request.getAttribute("query");
 
 		for (int i = 0; i < r.length; i++) {
 			String s = r[i][1];
-<<<<<<< HEAD
 			//s = s.substring(7);
-=======
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
 		%>
 		
-		<a class="link" href=<%=s%>><%=r[i][0]%> </a>
+		<a href=<%=s%>><%=r[i][0]%> </a><br><br>
 		<%
 		}
+		System.out.println("finished");
 		%>
 	</div>
 

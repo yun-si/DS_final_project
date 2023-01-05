@@ -18,7 +18,6 @@ public class WordCounter {
 //    	this.name=name;
     }
     
-<<<<<<< HEAD
     private String fetchContent() throws IOException,FileNotFoundException{
 		URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
@@ -41,12 +40,8 @@ public class WordCounter {
 		}
 	
 		return retVal;
-=======
-    public WordCounter(String urlStr, String name){
-    	this.urlStr = urlStr;
-    	this.name = name;
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
     }
+		
     
 //    private String fetchContent() throws IOException{
 //		URL url = new URL(this.urlStr);
@@ -109,19 +104,13 @@ public class WordCounter {
             return a;
     }
     
-<<<<<<< HEAD
+
    public int countKeyword(String keyword) throws IOException,FileNotFoundException{
 		if (content == null){
 			content = fetchContent();
 			System.out.println("success get content");	
 		}
-=======
-    public int countKeyword(String keyword) throws IOException{
-//		if (content == null){
-//		    content = fetchContent();
-//		}
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
-		
+
 		
 		this.name = name.toUpperCase();
 		keyword = keyword.toUpperCase();
@@ -140,55 +129,7 @@ public class WordCounter {
 		
 		return retVal;
     }
-<<<<<<< HEAD
-   
-   public int countKeyword1(String keyword) throws IOException,FileNotFoundException{
-//		if (content == null){
-//		    content = fetchContent();
-//		}
-		
-		
-		name = name.toUpperCase();
-		keyword = keyword.toUpperCase();
-	
-	    int retVal = 0; 
 
-		int n=name.length();
-		int m=keyword.length();
-		int i=BoyerMoore(name,keyword);
-		while(i!=-1) {
-			retVal++;
-			name=name.substring(i+m,n);
-			n=name.length();
-			i=BoyerMoore(name,keyword);
-		}
-		
-		return retVal;
-    }
-=======
-//   public int countKeyword(String keyword) throws IOException{
-//		if (content == null){
-//		    content = fetchContent();
-//		}
-//		
-//		
-//		content = content.toUpperCase();
-//		keyword = keyword.toUpperCase();
-//	
-//	    int retVal = 0; 
-//
-//		int n=content.length();
-//		int m=keyword.length();
-//		int i=BoyerMoore(content,keyword);
-//		while(i!=-1) {
-//			retVal++;
-//			content=content.substring(i+m,n-1);
-//			n=content.length();
-//			i=BoyerMoore(content,keyword);
-//		}
-//		
-//		return retVal;
-//    }
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project.git
+
 
 }
