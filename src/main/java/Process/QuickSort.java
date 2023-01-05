@@ -58,17 +58,12 @@ private ArrayList<WebNode> lst;
 		int range = max-min+1;
 		int random = (int)(Math.random()*range)+min;
 		if(lst.size() != 0) {
-//			System.out.println("origin");
-//			System.out.println(lst.size());
 			lst.add(random, new WebNode(new WebPage("Cafe Nomad - 全台網友們推薦的咖啡廳清單，適合工作、看書、喝杯咖啡", "/url?q=https://cafenomad.tw")));
-//			lst.add(new WebNode(new WebPage("Nomad","https://cafenomad.tw/")));
 		}
 		int len = lst.size();
 		
 		String[][] matrix=new String[len][2];
-//		String[][] matrix=new String[1][2]; for testing
-//		matrix[0][0] = (String)"Coffee Nomad";
-//		matrix[0][1] = (String)"https://cafenomad.tw";
+
 		for(int i=0;i<len;i++) {
 			matrix[i][0]=(String)((WebNode) lst.get(i)).getPageName().toString();
 			matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();

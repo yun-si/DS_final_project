@@ -89,7 +89,18 @@ public class Integration extends HttpServlet {
 			request.getRequestDispatcher("Search.jsp").forward(request, response);
 			return;
 		}
-		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
+		String inputKeyword = request.getParameter("inputKeyword");
+		Translator translator = new Translator();
+		inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+//		try {
+//			inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+//		} catch (IOException e) {
+//			System.out.println("IOException");
+//		} catch (Exception e) {
+//			System.out.println("");
+//		}
+		
+		GoogleQuery google = new GoogleQuery(inputKeyword);
 		HashMap<String, String> query = google.query();
 		
 		
