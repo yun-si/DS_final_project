@@ -8,16 +8,22 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
 
+
 public class WordCounter {
 	private String urlStr;
     private String content;
     private String name;
+    
+    long start =System.currentTimeMillis();
+    long end=start+20*1000;
+    
     
     public WordCounter(String urlStr){
     	this.urlStr = urlStr;
 //    	this.name=name;
     }
     
+<<<<<<< HEAD
     private String fetchContent() throws IOException, FileNotFoundException{
 		URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
@@ -28,22 +34,49 @@ public class WordCounter {
 		conn.setReadTimeout(20*1000);
 		conn.setDoInput(true);
 		conn.setDoOutput(false);
+=======
+//    public void run() throws InterruptedException {
+//    	while(!Thread.interrupted()) {
+//    		Thread.sleep(300);
+//    	}
+//    }
+    
+    private String fetchContent() throws IOException,FileNotFoundException {
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
 		
+<<<<<<< HEAD
 		System.out.println("runnung...");
 		InputStream in = conn.getInputStream();
 		BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
 
+=======
+    	do {
+	    	URL url = new URL(this.urlStr);
+			URLConnection conn = url.openConnection();
+			conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
+			conn.setRequestProperty("Accept", "*/*");
+			conn.setDoInput(true);
+			conn.setDoOutput(false);
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
 		
-	
-		String retVal = "";
-	
-		String line = null;
 		
-		while ((line = br.readLine()) != null){
-		    retVal = retVal + line + "\n";
-		}
-	
-		return retVal;
+			InputStream in = conn.getInputStream();
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
+		
+			
+		
+			String retVal = "";
+		
+			String line = null;
+			
+			while ((line = br.readLine()) != null){
+			    retVal = retVal + line + "\n";
+			}
+				
+    	
+			return retVal;
+    	}while(System.currentTimeMillis()<30*1000);
     }
 		
     
@@ -107,6 +140,7 @@ public class WordCounter {
         else 
             return a;
     }
+    
     
 
     public int countKeyword(String keyword) throws IOException, FileNotFoundException{

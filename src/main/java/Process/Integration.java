@@ -11,8 +11,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -42,46 +45,6 @@ public class Integration extends HttpServlet {
         super();
     }
 
-//    public static void main(String[] arg) {
-//    	KeywordList key=new KeywordList();
-//    	try{
-//			File input = new File("/pro_input.txt");
-//	    	if(input.exists()!=true) {
-//				key.add(new Keyword("咖啡廳",5.0));
-//				key.add(new Keyword("咖啡",5.0));
-//				key.add(new Keyword("coffee",5.0));
-//				key.add(new Keyword("Cafe",5.0));
-//				key.add(new Keyword("甜點",3.0));
-//				key.add(new Keyword("下午茶",3.0));
-//				key.add(new Keyword("文青",3.0));
-//				key.add(new Keyword("讀書",3.0));
-//				key.add(new Keyword("不限時",3.0));
-//				key.add(new Keyword("星巴克",2.0));
-//				key.add(new Keyword("路易莎",2.0));
-//				key.add(new Keyword("伯朗",2.0));
-//				
-//				
-//			}else {
-//				Scanner read = new Scanner(input);
-//				while(read.hasNextLine()) {
-//					String inputkey=read.next();
-//					double value = (double)read.nextInt();
-//					Keyword keyword= new Keyword(inputkey, value);
-//					key.add(keyword);
-//					System.out.print(keyword.getName());
-//					System.out.println();
-//				}
-//				read.close();
-//			}
-//
-//		}catch(FileNotFoundException e) {
-////			System.out.println("pro_input.txt Not Found");
-//			e.printStackTrace();
-//		}catch(IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//    }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException, FileNotFoundException, UnknownHostException {
     	response.setCharacterEncoding("UTF-8");
@@ -131,10 +94,20 @@ public class Integration extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+
 		
 		String inputKeyword = request.getParameter("inputKeyword");
 		Translator translator = new Translator();
+<<<<<<< HEAD
 		inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+=======
+		if(isContainChinese(inputKeyword)==false) {
+			inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+		}else {
+			System.out.println("contain chinese");
+		}
+		  
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
 		//  try {
 		//   inputKeyword = translator.translate("", "zh-TW", inputKeyword);
 		//  } catch (IOException e) {
@@ -191,10 +164,14 @@ public class Integration extends HttpServlet {
 			if(trash != -1) {
 				url = url.substring(0, trash);
 			}
+<<<<<<< HEAD
 //		for(WebNode nod:node) {
 //			q.add(nod);
 //		}
 			q.add(new WebNode(new WebPage(key, url)));
+=======
+
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
 		}
 //		
 //		for(WebNode wnode:node) {
@@ -206,9 +183,14 @@ public class Integration extends HttpServlet {
 //
 //
 		q.sort();
+<<<<<<< HEAD
 //		
 ////		q.sort(key);
 //
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
 		String[][] s = q.output();
 
 		System.out.println("s len: ");
@@ -234,5 +216,31 @@ public class Integration extends HttpServlet {
 
 		doGet(request, response);
 	}
+	
+	public static boolean isContainChinese(String str) {
+		Pattern p=Pattern.compile("[\u4e00-\u9fa5]");
+		Matcher m=p.matcher(str);
+		if(m.matches()) {
+			return true;
+		}
+		return false;
+	}
+//	public static boolean isChinese(String str) throws UnsupportedEncodingException {
+//		int len=str.length();
+//		for(int i=0;i<len;i++ ) {
+//			String temp=URLEncoder.encode(str.charAt(i)+"","utf-8");
+//			if(temp.equals(str.charAt(i)+"")) {
+//				continue;
+//				String[] codes = temp.split("%");
+//				for(String code:codes){
+//					if(code.compareTo("40")>0) {
+//						return true;
+//					}
+//				}
+//			
+//			}
+//		}
+//		return false;
+//	}
 
 }
