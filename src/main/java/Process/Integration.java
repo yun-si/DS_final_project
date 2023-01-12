@@ -1,10 +1,12 @@
 package Process;
+
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.ArrayList;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -14,6 +16,7 @@ import java.util.regex.Pattern;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,16 +37,15 @@ public class Integration extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
 	
-	public ArrayList<WebPage> page = new ArrayList<WebPage>();
-	public ArrayList<WebNode> node = new ArrayList<WebNode>();
-	public ArrayList<WebTree> treList = new ArrayList<WebTree>();
+	public ArrayList<WebPage> page;
+	public ArrayList<WebNode> node;
+//	public ArrayList<WebTree> treList = new ArrayList<WebTree>();
 	public KeywordList key;
-
+	
     public Integration() throws IOException{
         super();
     }
-
-
+  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException, FileNotFoundException, UnknownHostException {
 
     	response.setCharacterEncoding("UTF-8");
@@ -55,9 +57,9 @@ public class Integration extends HttpServlet {
 			request.getRequestDispatcher("Search.jsp").forward(request, response);
 			return;
 		}
-
-
-
+		
+		
+		
 		key = new KeywordList();
 		try{
 			File input = new File("pro_input.txt");
@@ -93,16 +95,18 @@ public class Integration extends HttpServlet {
 //		catch(IOException e) {
 //			e.printStackTrace();
 //		}
+		
 
-
-
+		
 		String inputKeyword = request.getParameter("inputKeyword");
-		Translator translator = new Translator();
-
+		
 		if(isContainChinese(inputKeyword)==false) {
+			Translator translator = new Translator();
+			inputKeyword=inputKeyword.toUpperCase();
 			inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+			System.out.println("input keyword is translated");
 		}else {
-			System.out.println("contain chinese");
+			System.out.print(inputKeyword);
 		}
 
 		//  try {
@@ -116,7 +120,10 @@ public class Integration extends HttpServlet {
 		GoogleQuery google = new GoogleQuery(inputKeyword);
 //		GoogleQuery google = new GoogleQuery(request.getParameter("inputKeyword"));
 		HashMap<String, String> query = google.query();
-
+		
+        page = new ArrayList<WebPage>();
+        node = new ArrayList<WebNode>();
+        
 		for(String title: query.keySet()) {
 			String url = query.get(title);
 			int trash = url.indexOf("&sa");
@@ -124,7 +131,8 @@ public class Integration extends HttpServlet {
 				url = url.substring(0, trash);
 			}
 			url = url.substring(7);
-	@@ -132,30 +130,29 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
+			String url_de = URLDecoder.decode(url, "UTF-8");
+//			WebPage webPage = new WebPage(title,url_de);
 //			webPage.setScore(key);
 			page.add(new WebPage(title, url_de));
 //			page.add();
@@ -140,7 +148,7 @@ public class Integration extends HttpServlet {
 //			try {
 				WebTree webTree = google.getAllLink(root);
 				webTree.setPostOrderScore(key);
-				System.out.println("Total: " + Double.toString(webTree.getScore()));
+				System.out.println("Sub link total: " + Double.toString(webTree.getScore()));
 //				treList.add(webTree);
 //				p.setScore(key);
 				node.add(root);
@@ -150,18 +158,41 @@ public class Integration extends HttpServlet {
 		}
 		System.out.println("node len");
 		System.out.println(node.size());
-
-
+		
+		
 		QuickSort q = new QuickSort();
 		for (WebNode webNode : node) {
 			q.add(webNode);
-	@@ -186,30 +183,62 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
+		}
+//		for (String key : query.keySet()) {
+//			String url = query.get(key);
+//			url = url.substring(7);
+//			int trash = url.indexOf("&sa");
+//			if(trash != -1) {
+//				url = url.substring(0, trash);
+//			}
+//
+//			q.add(new WebNode(new WebPage(key, url)));
+//
+//		}
+//		
+//		for(WebNode wnode:node) {
+//			System.out.println(wnode.webPage.name);
+//			System.out.println(wnode.webPage.url);
+//			q.add(wnode);
+//		}
+
+		q.sort();
+
+		String[][] s = q.output();
+
+		System.out.println("s len: ");
 		System.out.print(s.length);
 //		
 ////		String[][] s = new String[query.size()][2];
 		request.setAttribute("query", s);
 
-
+		
 //		System.out.println("the first:" + s[0][0]);
 //		System.out.println("the first:" + s[0][1]);
 //		System.out.println("the second:" + s[1][0]);
@@ -204,4 +235,5 @@ public class Integration extends HttpServlet {
 //		}
 //		return false;
 //	}
+
 }
