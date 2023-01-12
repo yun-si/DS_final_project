@@ -66,11 +66,27 @@
 		%>
 		
 		<a href=<%=s%>><%=r[i][0]%> </a><br><br>
+		
 		<%
-		}
-		System.out.println("finished");
-		%>
+			}
+			%>
 	</div>
+	
+	<div class="relative_div">
+					<h1>相關搜尋：</h1>
+			
+			<%
+			
+			String[][] relate = (String[][]) request.getAttribute("relate");
+			for (int i = 0; i < relate.length; i++) {
+				String rel = relate[i][1];
+			%>
+			<a href='<%=rel%>'><%=relate[i][0]%> </a> <br> <br> <br>
+			<%
+			}
+			%>
+			
+		</div>
 
 </body>
 </html>
