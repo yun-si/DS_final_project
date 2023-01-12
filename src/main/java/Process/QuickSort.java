@@ -59,16 +59,6 @@ private ArrayList<WebTree> treeLst;
 	
 	
 	public String[][] output() {
-		int min=2;
-		int max=7;
-		int range=max-min+1;
-		int random = (int)(Math.random()*range)+min;
-		if(lst.size() != 0 && lst.size() > random) {
-//			System.out.println("origin");
-//			System.out.println(lst.size());
-			lst.add(new WebNode(new WebPage("Cafe Nomad - 全台網友們推薦的咖啡廳清單，適合工作、看書、喝杯咖啡", "/url?q=https://cafenomad.tw")));
-//			lst.add(new WebNode(new WebPage("Nomad","https://cafenomad.tw/")));
-		}
 		
 		int len = lst.size();
 		String[][] matrix = new String[len][2];
