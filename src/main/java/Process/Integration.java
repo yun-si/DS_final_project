@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 /**
@@ -39,12 +40,12 @@ public class Integration extends HttpServlet {
 	public ArrayList<WebNode>node=new ArrayList<WebNode>();
 	public KeywordList key;
 	
-    public Integration() {
+    public Integration() throws IOException{
         super();
     }
 
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException,FileNotFoundException {
     	response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
@@ -88,9 +89,10 @@ public class Integration extends HttpServlet {
 		}catch(FileNotFoundException e) {
 			System.out.println("pro_input.txt Not Found");
 			e.printStackTrace();
-		}catch(IOException e) {
-			e.printStackTrace();
 		}
+//		catch(IOException e) {
+//			e.printStackTrace();
+//		}
 		
 
 		
@@ -181,7 +183,7 @@ public class Integration extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,FileNotFoundException {
 
 		doGet(request, response);
 	}

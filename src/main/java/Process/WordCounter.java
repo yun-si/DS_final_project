@@ -8,14 +8,16 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
 
+import javax.servlet.ServletException;
+
 
 public class WordCounter {
 	private String urlStr;
     private String content;
     private String name;
     
-    long start =System.currentTimeMillis();
-    long end=start+20*1000;
+//    long start = System.currentTimeMillis();
+//    long end=start+20*1000;
     
     
     public WordCounter(String urlStr){
@@ -23,21 +25,21 @@ public class WordCounter {
 //    	this.name=name;
     }
     
-//    public void run() throws InterruptedException {
-//    	while(!Thread.interrupted()) {
-//    		Thread.sleep(300);
-//    	}
-//    }
+
     
-    private String fetchContent() throws IOException,FileNotFoundException {
-		
+    private String fetchContent() throws IOException,FileNotFoundException{
+		long start=System.currentTimeMillis();
     	do {
+    		
 	    	URL url = new URL(this.urlStr);
-			URLConnection conn = url.openConnection();
-			conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
+	    	URLConnection conn = url.openConnection();
+//	    	conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
+//			conn.setRequestProperty("http.agent","Chrome/107.0.5304.107");
 			conn.setRequestProperty("Accept", "*/*");
+			conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
 			conn.setDoInput(true);
 			conn.setDoOutput(false);
+
 		
 		
 			InputStream in = conn.getInputStream();
@@ -53,10 +55,11 @@ public class WordCounter {
 			while ((line = br.readLine()) != null){
 			    retVal = retVal + line + "\n";
 			}
-				
+    	
     	
 			return retVal;
-    	}while(System.currentTimeMillis()<30*1000);
+    	}while((System.currentTimeMillis()-start)<30000);
+    	
     }
 		
     
@@ -125,8 +128,12 @@ public class WordCounter {
 
     public int countKeyword(String keyword) throws IOException,FileNotFoundException{
  		if (content == null){
- 			content = fetchContent();
- 			System.out.println("success get content");	
+ 			System.out.print(System.currentTimeMillis());
+// 			long start=System.currentTimeMillis();
+// 			do {
+ 				content = fetchContent();
+ 				System.out.println("success get content");
+// 			}while((System.currentTimeMillis()-start)<30*1000);
  		}
  		
  		
