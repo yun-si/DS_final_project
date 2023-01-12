@@ -1,5 +1,7 @@
 package Process;
+
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -7,10 +9,13 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
 import java.util.HashMap;
+
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 public class GoogleQuery {
 	public String searchKeyword;
 	public String url;
@@ -63,28 +68,34 @@ public class GoogleQuery {
 //		System.out.println(url);
 	}
 	
-	private String fetchContent() throws IOException {
+	private String fetchContent() throws IOException, FileNotFoundException {
 		String retVal = "";
+
 		URL u = new URL(url);
 		URLConnection conn = u.openConnection();
 		//set HTTP header
 		conn.setRequestProperty("User-agent", "Chrome/107.0.5304.107");
+		conn.setRequestProperty("http.agent", "Chrome/107.0.5304.107");
+		conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
 		InputStream in = conn.getInputStream();
 
 		InputStreamReader inReader = new InputStreamReader(in, "utf-8");
 		BufferedReader bufReader = new BufferedReader(inReader);
 		String line = null;
+
 		while((line = bufReader.readLine()) != null) {
 			retVal += line;
 		}
 		return retVal;
 	}
 	
+
 	
-	public HashMap<String, String> query() throws IOException {
+	public HashMap<String, String> query() throws IOException, FileNotFoundException {
 		if(content == null) {
 			content = fetchContent();
 		}
+
 		HashMap<String, String> retVal = new HashMap<String, String>();
 		HashMap<String, WebTree> retValPro = new HashMap<String, WebTree>();
 		/* 
@@ -105,6 +116,10 @@ public class GoogleQuery {
 				title = li.select("a").get(0).select(".vvjwJb").text();
 				citeUrl = li.select("a").get(0).attr("href");
 				
+				if(citeUrl.contains("ent.ltn.com.tw") || citeUrl.contains("kellyrosie12.com") || citeUrl.contains("inline.app")) {
+					continue;
+				}
+				
 				counter = new WordCounter(citeUrl);
 				
 				if(title.equals("")) {
@@ -115,6 +130,7 @@ public class GoogleQuery {
 				
 				//put title and pair into HashMap
 				retVal.put(title, citeUrl);
+
 			} catch (IndexOutOfBoundsException e) {
 //				e.printStackTrace();
 			}
@@ -122,7 +138,7 @@ public class GoogleQuery {
 		return retVal;
 	}
 	
-	public WebTree getAllLink(WebNode root) throws IOException {		
+	public WebTree getAllLink(WebNode root) throws IOException, FileNotFoundException {		
 		System.out.println(root.webPage.name);
 		System.out.println(root.webPage.url);
 		
@@ -131,6 +147,7 @@ public class GoogleQuery {
 		if(content == null) {
 			content = fetchContent();
 		}
+
 		Document doc = Jsoup.parse(content);
 		Elements aLinls = doc.select("a[href]");
 		int i = 1;
@@ -157,7 +174,9 @@ public class GoogleQuery {
 			}
 			
 			String url_de = URLDecoder.decode(url, "UTF-8");
-			
+			if(!url_de.startsWith("http")) {
+				continue;
+			}
 			boolean n = false;
 			for(String noice: keyNoiseLst) {
 				if(url.contains(noice)) {
