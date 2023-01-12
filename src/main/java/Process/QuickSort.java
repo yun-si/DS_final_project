@@ -36,8 +36,8 @@ private ArrayList<WebTree> treeLst;
 			int index =start;
 			for(int i =start;i<end;i++) {
 				WebNode n=lst.get(i);
-				double a =n.webPage.getScore(); 
-				double p =pivot.webPage.getScore();
+				double a =n.nodeScore + n.webPage.getScore(); 
+				double p =n.nodeScore + pivot.webPage.getScore();
 				if(a>p){ 
 					swap(i,index); 
 					index++;
@@ -92,16 +92,13 @@ private ArrayList<WebTree> treeLst;
 //			}
 //			
 //		}
-
-
 		for(int i=0; i<len; i++) {
 			matrix[i][0]=(String)((WebNode) lst.get(i)).getPageName().toString();
 			matrix[i][1]=(String)((WebNode) lst.get(i)).url.toString();
-			System.out.print(lst.get(i).webPage.getScore()+" ");
+			System.out.print(lst.get(i).webPage.getScore()+lst.get(i).nodeScore +" ");
 			System.out.print(lst.get(i).getPageName()+"\n");
 			
 		}
 		return matrix;
 	}
-	
 }
