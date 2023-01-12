@@ -28,9 +28,9 @@ public class WordCounter {
     
     private String fetchContent() throws IOException,FileNotFoundException, SSLHandshakeException {
 		long start=System.currentTimeMillis();
-		System.out.println("runnung...");
+		System.out.println("runnig...");
 
-    	do {
+//    	do {
     		
 	    	URL url = new URL(this.urlStr);
 	    	URLConnection conn = url.openConnection();
@@ -53,7 +53,7 @@ public class WordCounter {
 			    retVal = retVal + line + "\n";
 			}
 		return retVal;
-		}while((System.currentTimeMillis()-start)<30000);
+//		}while((System.currentTimeMillis()-start)<30000);
     	
     }
 		

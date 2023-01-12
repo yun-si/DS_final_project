@@ -24,7 +24,7 @@ public class GoogleQuery {
 	public String citeUrl;
 	public WordCounter counter;
 	
-	public String[] keyNoiseLst = {"accounts.google.com", ".php", "www.youtube.com", "shopee.tw", "tiktok", "inline.app"};
+	public String[] keyNoiseLst = {"accounts.google.com", ".php", "www.youtube.com", "shopee.tw", "tiktok", "inline.app", "www.viviyu.com"};
 	
 //	public static void main(String[] args) throws IOException {
 //		GoogleQuery g = new GoogleQuery("貓");
