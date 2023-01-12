@@ -25,10 +25,10 @@ public class WordCounter {
 //    	this.name=name;
     }
     
-
-    
-    private String fetchContent() throws IOException,FileNotFoundException{
+    private String fetchContent() throws IOException,FileNotFoundException {
 		long start=System.currentTimeMillis();
+		System.out.println("runnung...");
+
     	do {
     		
 	    	URL url = new URL(this.urlStr);
@@ -39,15 +39,11 @@ public class WordCounter {
 			conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
 			conn.setDoInput(true);
 			conn.setDoOutput(false);
-
-		
-		
+			
 			InputStream in = conn.getInputStream();
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
-		
 			
-		
 			String retVal = "";
 		
 			String line = null;
@@ -55,10 +51,8 @@ public class WordCounter {
 			while ((line = br.readLine()) != null){
 			    retVal = retVal + line + "\n";
 			}
-    	
-    	
-			return retVal;
-    	}while((System.currentTimeMillis()-start)<30000);
+		return retVal;
+		}while((System.currentTimeMillis()-start)<30000);
     	
     }
 		
@@ -136,20 +130,19 @@ public class WordCounter {
 // 			}while((System.currentTimeMillis()-start)<30*1000);
  		}
  		
- 		
  		content = content.toUpperCase();
  		keyword = keyword.toUpperCase();
- 	
+
  	    int retVal = 0; 
 
- 		int n=content.length();
- 		int m=keyword.length();
- 		int i=BoyerMoore(content,keyword);
- 		while(i!=-1) {
+ 		int n = content.length();
+ 		int m = keyword.length();
+ 		int i = BoyerMoore(content,keyword);
+ 		while(i != -1) {
  			retVal++;
- 			content=content.substring(i+m,n-1);
- 			n=content.length();
- 			i=BoyerMoore(content,keyword);
+ 			content = content.substring(i+m,n-1);
+ 			n = content.length();
+ 			i = BoyerMoore(content,keyword);
  		}
  		
  		return retVal;

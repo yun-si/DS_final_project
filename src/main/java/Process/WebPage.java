@@ -1,5 +1,6 @@
 package Process;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -13,10 +14,9 @@ public class WebPage {
 		this.url = url;
 		this.name = name;
 		this.counter = new WordCounter(url);
-		
 	}
 	
-	public void setScore(KeywordList keywords) throws IOException{
+	public void setScore(KeywordList keywords) throws IOException, FileNotFoundException{
 		score = 0;
 
 		for(int i =0; i < keywords.size(); i++) {
