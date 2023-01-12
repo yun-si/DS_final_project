@@ -2,6 +2,7 @@ package Process;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import javax.net.ssl.SSLHandshakeException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -25,7 +26,7 @@ public class WordCounter {
 //    	this.name=name;
     }
     
-    private String fetchContent() throws IOException,FileNotFoundException {
+    private String fetchContent() throws IOException,FileNotFoundException, SSLHandshakeException {
 		long start=System.currentTimeMillis();
 		System.out.println("runnung...");
 
@@ -35,8 +36,8 @@ public class WordCounter {
 	    	URLConnection conn = url.openConnection();
 	    	conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
 			conn.setRequestProperty("http.agent","Chrome/107.0.5304.107");
-			conn.setRequestProperty("Accept", "*/*");
 			conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
+			conn.setRequestProperty("Accept", "*/*");
 			conn.setDoInput(true);
 			conn.setDoOutput(false);
 			
@@ -122,7 +123,7 @@ public class WordCounter {
 
     public int countKeyword(String keyword) throws IOException,FileNotFoundException{
  		if (content == null){
- 			System.out.print(System.currentTimeMillis());
+// 			System.out.print(System.currentTimeMillis());
 // 			long start=System.currentTimeMillis();
 // 			do {
  				content = fetchContent();
@@ -147,7 +148,4 @@ public class WordCounter {
  		
  		return retVal;
      }
-
-
-
 }
