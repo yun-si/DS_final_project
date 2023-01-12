@@ -1,5 +1,6 @@
 package Process;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,8 +22,6 @@ public class WebNode {
 		this.url=webPage.getUrl();
 		
 		this.children = new ArrayList<WebNode>();
-		
-		
 	}
 	
 	
@@ -35,14 +34,15 @@ public class WebNode {
 	}
 	
 	
-	public void setNodeScore(KeywordList keywords) throws IOException{
+	public void setNodeScore(KeywordList keywords) throws IOException, FileNotFoundException{
 		webPage.setScore(keywords);
-		nodeScore = webPage.score;		
+		nodeScore = webPage.score;
+		System.out.println(nodeScore);
 		
 		for(WebNode child : children){
 			nodeScore += child.nodeScore;
 		}
-		System.out.println(nodeScore);
+
 	}
 	
 	public void addChild(WebNode child){

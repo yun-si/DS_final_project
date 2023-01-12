@@ -1,6 +1,7 @@
 package Process;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -32,8 +33,9 @@ public class Integration extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
 	
-	public ArrayList<WebPage>page=new ArrayList<WebPage>();
-	public ArrayList<WebNode>node=new ArrayList<WebNode>();
+	public ArrayList<WebPage> page = new ArrayList<WebPage>();
+	public ArrayList<WebNode> node = new ArrayList<WebNode>();
+	public ArrayList<WebTree> treList = new ArrayList<WebTree>();
 	public KeywordList key;
 	
     public Integration() {
@@ -81,7 +83,7 @@ public class Integration extends HttpServlet {
 //
 //    }
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UnsupportedEncodingException, FileNotFoundException, UnknownHostException {
     	response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
@@ -132,7 +134,7 @@ public class Integration extends HttpServlet {
 		
 		String inputKeyword = request.getParameter("inputKeyword");
 		Translator translator = new Translator();
-		  inputKeyword = translator.translate("", "zh-TW", inputKeyword);
+		inputKeyword = translator.translate("", "zh-TW", inputKeyword);
 		//  try {
 		//   inputKeyword = translator.translate("", "zh-TW", inputKeyword);
 		//  } catch (IOException e) {
@@ -155,17 +157,27 @@ public class Integration extends HttpServlet {
 			String url_de = URLDecoder.decode(url, "UTF-8");
 //			WebPage webPage = new WebPage(title,url_de);
 //			webPage.setScore(key);
-			page.add(new WebPage(title,url_de));
+			page.add(new WebPage(title, url_de));
 //			page.add();
 			
 		}
+		System.out.println("page size:");
+		System.out.println(page.size());
+		
 		for(WebPage p:page) {
-			try {
-				p.setScore(key);
-				node.add(new WebNode(p));
-			}catch(IOException e) {
-				e.printStackTrace();
-			}
+//			System.out.println(p.name);
+//			System.out.println(p.url);
+			WebNode root = new WebNode(p);
+//			try {
+				WebTree webTree = google.getAllLink(root);
+				webTree.setPostOrderScore(key);
+				System.out.println("Total: " + Double.toString(webTree.getScore()));
+//				treList.add(webTree);
+//				p.setScore(key);
+				node.add(root);
+//			}catch(IOException e) {
+//				e.printStackTrace();
+//			}
 		}
 		System.out.println("node len");
 		System.out.println(node.size());
@@ -179,30 +191,30 @@ public class Integration extends HttpServlet {
 			if(trash != -1) {
 				url = url.substring(0, trash);
 			}
-
-		
 //		for(WebNode nod:node) {
 //			q.add(nod);
 //		}
-			//q.add(new WebNode(new WebPage(key, url)));
+			q.add(new WebNode(new WebPage(key, url)));
 		}
-		
-		for(WebNode wnode:node) {
-			q.add(wnode);
-		}
-		
-
-
+//		
+//		for(WebNode wnode:node) {
+//			System.out.println(wnode.webPage.name);
+//			System.out.println(wnode.webPage.url);
+//			q.add(wnode);
+//		}
+//		
+//
+//
 		q.sort();
-		
-//		q.sort(key);
-
+//		
+////		q.sort(key);
+//
 		String[][] s = q.output();
 
-		System.out.println("s len");
+		System.out.println("s len: ");
 		System.out.print(s.length);
-		
-//		String[][] s = new String[query.size()][2];
+//		
+////		String[][] s = new String[query.size()][2];
 		request.setAttribute("query", s);
 
 		

@@ -18,14 +18,18 @@ public class WordCounter {
 //    	this.name=name;
     }
     
-    private String fetchContent() throws IOException,FileNotFoundException{
+    private String fetchContent() throws IOException, FileNotFoundException{
 		URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
-		conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
+//		conn.setRequestProperty("http.agent","Chrome/107.0.5304.107");
+		conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
 		conn.setRequestProperty("Accept", "*/*");
+//		conn.setRequestProperty("accept", "application/json");
+		conn.setReadTimeout(20*1000);
 		conn.setDoInput(true);
 		conn.setDoOutput(false);
 		
+		System.out.println("runnung...");
 		InputStream in = conn.getInputStream();
 		BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
 
@@ -105,26 +109,26 @@ public class WordCounter {
     }
     
 
-    public int countKeyword(String keyword) throws IOException,FileNotFoundException{
- 		if (content == null){
+    public int countKeyword(String keyword) throws IOException, FileNotFoundException{
+    	if (content == null){
+			
  			content = fetchContent();
- 			System.out.println("success get content");	
- 		}
- 		
- 		
+ 			System.out.println("success get content");
+		}
+		
  		content = content.toUpperCase();
  		keyword = keyword.toUpperCase();
- 	
+
  	    int retVal = 0; 
 
- 		int n=content.length();
- 		int m=keyword.length();
- 		int i=BoyerMoore(content,keyword);
- 		while(i!=-1) {
+ 		int n = content.length();
+ 		int m = keyword.length();
+ 		int i = BoyerMoore(content,keyword);
+ 		while(i != -1) {
  			retVal++;
- 			content=content.substring(i+m,n-1);
- 			n=content.length();
- 			i=BoyerMoore(content,keyword);
+ 			content = content.substring(i+m,n-1);
+ 			n = content.length();
+ 			i = BoyerMoore(content,keyword);
  		}
  		
  		return retVal;
