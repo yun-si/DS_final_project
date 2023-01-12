@@ -33,8 +33,8 @@ public class WordCounter {
     		
 	    	URL url = new URL(this.urlStr);
 	    	URLConnection conn = url.openConnection();
-//	    	conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
-//			conn.setRequestProperty("http.agent","Chrome/107.0.5304.107");
+	    	conn.setRequestProperty("User-Agent","Chrome/107.0.5304.107");
+			conn.setRequestProperty("http.agent","Chrome/107.0.5304.107");
 			conn.setRequestProperty("Accept", "*/*");
 			conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
 			conn.setDoInput(true);

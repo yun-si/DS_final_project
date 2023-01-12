@@ -157,26 +157,27 @@ public class Integration extends HttpServlet {
 		
 		
 		QuickSort q = new QuickSort();
-		for (String key : query.keySet()) {
-			String url = query.get(key);
-			url = url.substring(7);
-			int trash = url.indexOf("&sa");
-			if(trash != -1) {
-				url = url.substring(0, trash);
-			}
-
-			q.add(new WebNode(new WebPage(key, url)));
-
+		for (WebNode webNode : node) {
+			q.add(webNode);
 		}
+//		for (String key : query.keySet()) {
+//			String url = query.get(key);
+//			url = url.substring(7);
+//			int trash = url.indexOf("&sa");
+//			if(trash != -1) {
+//				url = url.substring(0, trash);
+//			}
+//
+//			q.add(new WebNode(new WebPage(key, url)));
+//
+//		}
 //		
 //		for(WebNode wnode:node) {
 //			System.out.println(wnode.webPage.name);
 //			System.out.println(wnode.webPage.url);
 //			q.add(wnode);
 //		}
-//		
-//
-//
+
 		q.sort();
 
 		String[][] s = q.output();

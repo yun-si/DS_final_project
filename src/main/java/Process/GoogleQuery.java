@@ -74,6 +74,8 @@ public class GoogleQuery {
 		URLConnection conn = u.openConnection();
 		//set HTTP header
 		conn.setRequestProperty("User-agent", "Chrome/107.0.5304.107");
+		conn.setRequestProperty("http.agent", "Chrome/107.0.5304.107");
+		conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
 		InputStream in = conn.getInputStream();
 
 		InputStreamReader inReader = new InputStreamReader(in, "utf-8");
