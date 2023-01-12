@@ -23,33 +23,10 @@ public class WordCounter {
 //    	this.name=name;
     }
     
-<<<<<<< HEAD
-    private String fetchContent() throws IOException, FileNotFoundException{
-		URL url = new URL(this.urlStr);
-		URLConnection conn = url.openConnection();
-//		conn.setRequestProperty("http.agent","Chrome/107.0.5304.107");
-		conn.setRequestProperty("authorization","Chrome/107.0.5304.107");
-		conn.setRequestProperty("Accept", "*/*");
-//		conn.setRequestProperty("accept", "application/json");
-		conn.setReadTimeout(20*1000);
-		conn.setDoInput(true);
-		conn.setDoOutput(false);
-=======
-//    public void run() throws InterruptedException {
-//    	while(!Thread.interrupted()) {
-//    		Thread.sleep(300);
-//    	}
-//    }
-    
     private String fetchContent() throws IOException,FileNotFoundException {
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
-		
-<<<<<<< HEAD
-		System.out.println("runnung...");
-		InputStream in = conn.getInputStream();
-		BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
 
-=======
+		System.out.println("runnung...");
+
     	do {
 	    	URL url = new URL(this.urlStr);
 			URLConnection conn = url.openConnection();
@@ -57,15 +34,11 @@ public class WordCounter {
 			conn.setRequestProperty("Accept", "*/*");
 			conn.setDoInput(true);
 			conn.setDoOutput(false);
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
-		
-		
+			
 			InputStream in = conn.getInputStream();
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
-		
 			
-		
 			String retVal = "";
 		
 			String line = null;
@@ -73,8 +46,6 @@ public class WordCounter {
 			while ((line = br.readLine()) != null){
 			    retVal = retVal + line + "\n";
 			}
-				
-    	
 			return retVal;
     	}while(System.currentTimeMillis()<30*1000);
     }

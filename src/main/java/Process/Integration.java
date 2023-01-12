@@ -98,16 +98,13 @@ public class Integration extends HttpServlet {
 		
 		String inputKeyword = request.getParameter("inputKeyword");
 		Translator translator = new Translator();
-<<<<<<< HEAD
-		inputKeyword = translator.translate("", "zh-TW", inputKeyword);
-=======
+
 		if(isContainChinese(inputKeyword)==false) {
 			inputKeyword = translator.translate("", "zh-TW", inputKeyword);
 		}else {
 			System.out.println("contain chinese");
 		}
-		  
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
+
 		//  try {
 		//   inputKeyword = translator.translate("", "zh-TW", inputKeyword);
 		//  } catch (IOException e) {
@@ -164,14 +161,9 @@ public class Integration extends HttpServlet {
 			if(trash != -1) {
 				url = url.substring(0, trash);
 			}
-<<<<<<< HEAD
-//		for(WebNode nod:node) {
-//			q.add(nod);
-//		}
-			q.add(new WebNode(new WebPage(key, url)));
-=======
 
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
+			q.add(new WebNode(new WebPage(key, url)));
+
 		}
 //		
 //		for(WebNode wnode:node) {
@@ -183,14 +175,7 @@ public class Integration extends HttpServlet {
 //
 //
 		q.sort();
-<<<<<<< HEAD
-//		
-////		q.sort(key);
-//
-=======
 
-
->>>>>>> branch 'master' of https://github.com/yun-si/DS_final_project
 		String[][] s = q.output();
 
 		System.out.println("s len: ");
